@@ -1,23 +1,16 @@
 package gglm
 
 import (
+	"fmt"
+
 	"gonum.org/v1/gonum/blas/blas32"
 )
 
 var _ Swizzle2 = &Vec2{}
+var _ fmt.Stringer = &Vec2{}
 
 type Vec2 struct {
 	*blas32.Vector
-}
-
-func (v *Vec2) AddVec2(v2 *Vec2) {
-	v.Data[0] += v2.Data[0]
-	v.Data[1] += v2.Data[1]
-}
-
-func (v *Vec2) Scale(x float32) {
-	v.Data[0] *= x
-	v.Data[1] *= x
 }
 
 func (v *Vec2) X() float32 {
@@ -34,6 +27,28 @@ func (v *Vec2) R() float32 {
 
 func (v *Vec2) G() float32 {
 	return v.Data[1]
+}
+
+func (v *Vec2) String() string {
+	return fmt.Sprintf("(%f, %f)", v.X(), v.Y())
+}
+
+//Scale v *= x (element wise multiplication)
+func (v *Vec2) Scale(x float32) {
+	v.Data[0] *= x
+	v.Data[1] *= x
+}
+
+//AddVec2 v += v2
+func (v *Vec2) AddVec2(v2 *Vec2) {
+	v.Data[0] += v2.Data[0]
+	v.Data[1] += v2.Data[1]
+}
+
+//SubVec2 v -= v2
+func (v *Vec2) SubVec2(v2 *Vec2) {
+	v.Data[0] -= v2.Data[0]
+	v.Data[1] -= v2.Data[1]
 }
 
 //Mag returns the magnitude of the vector

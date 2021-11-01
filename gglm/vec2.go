@@ -39,16 +39,15 @@ func (v *Vec2) Scale(x float32) {
 	v.Data[1] *= x
 }
 
-//AddVec2 v += v2
-func (v *Vec2) AddVec2(v2 *Vec2) {
-	v.Data[0] += v2.Data[0]
-	v.Data[1] += v2.Data[1]
+func (v *Vec2) Add(b Swizzle2) {
+	v.Data[0] += b.X()
+	v.Data[1] += b.Y()
 }
 
 //SubVec2 v -= v2
-func (v *Vec2) SubVec2(v2 *Vec2) {
-	v.Data[0] -= v2.Data[0]
-	v.Data[1] -= v2.Data[1]
+func (v *Vec2) Sub(v2 *Vec2) {
+	v.Data[0] -= v2.X()
+	v.Data[1] -= v2.Y()
 }
 
 //Mag returns the magnitude of the vector

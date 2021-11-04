@@ -27,6 +27,7 @@ func (m *Mat2) Size() MatSize {
 }
 
 func (m *Mat2) String() string {
+	//+ always shows +/- sign; - means pad to the right; 9 means total of 9 digits (or padding if less); .3 means 3 decimals
 	return fmt.Sprintf("\n| %+-9.3f %+-9.3f |\n| %+-9.3f %+-9.3f |\n", m.Arr[0], m.Arr[1], m.Arr[2], m.Arr[3])
 }
 

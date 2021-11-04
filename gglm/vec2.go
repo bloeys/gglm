@@ -60,6 +60,16 @@ func (v *Vec2) SqrMag() float32 {
 	return v.X()*v.X() + v.Y()*v.Y()
 }
 
+//AddVec2 v3 = v1 + v2
+func AddVec2(v1 *Vec2, v2 *Vec2) *Vec2 {
+	return NewVec2([]float32{v1.X() + v2.X(), v1.Y() + v2.Y()})
+}
+
+//SubVec2 v3 = v1 + v2
+func SubVec2(v1, v2 *Vec2) *Vec2 {
+	return NewVec2([]float32{v1.X() - v2.X(), v1.Y() - v2.Y()})
+}
+
 func NewVec2(data []float32) *Vec2 {
 
 	if data == nil {

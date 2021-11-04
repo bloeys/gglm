@@ -16,13 +16,13 @@ func main() {
 
 	m1 := gglm.NewMat4(nil)
 
-	// f := []float32{
-	// 	0, 0, 0, 0,
-	// 	0, 0, 0, 0,
-	// 	0, 0, 0, 0,
-	// 	0, 0, 0, 0,
-	// }
-	m2 := gglm.NewMat4(nil)
+	f := []float32{
+		-10, 0, 100, 0,
+		0, 0, 0, 0,
+		0, 0, 0, 0,
+		0, 0, 0, 0,
+	}
+	m2 := gglm.NewMat4(f)
 
 	println("m1:", m1.String())
 	println("m2:", m2.String())

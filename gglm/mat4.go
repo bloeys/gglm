@@ -27,7 +27,7 @@ func (m *Mat4) Size() MatSize {
 }
 
 func (m *Mat4) String() string {
-	return fmt.Sprintf("\n| %f %f %f %f |\n| %f %f %f %f |\n| %f %f %f %f |\n| %f %f %f %f |\n",
+	return fmt.Sprintf("\n| %+-9.3f %+-9.3f %+-9.3f %+-9.3f |\n| %+-9.3f %+-9.3f %+-9.3f %+-9.3f |\n| %+-9.3f %+-9.3f %+-9.3f %+-9.3f |\n| %+-9.3f %+-9.3f %+-9.3f %+-9.3f |\n",
 		m.Arr[0], m.Arr[1], m.Arr[2], m.Arr[3],
 		m.Arr[4], m.Arr[5], m.Arr[6], m.Arr[7],
 		m.Arr[8], m.Arr[9], m.Arr[10], m.Arr[11],

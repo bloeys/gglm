@@ -27,7 +27,7 @@ func (m *Mat2) Size() MatSize {
 }
 
 func (m *Mat2) String() string {
-	return fmt.Sprintf("| %f %f |\n| %f %f |", m.Arr[0], m.Arr[1], m.Arr[2], m.Arr[3])
+	return fmt.Sprintf("\n| %f %f |\n| %f %f |\n", m.Arr[0], m.Arr[1], m.Arr[2], m.Arr[3])
 }
 
 //Add m += m2

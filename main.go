@@ -10,17 +10,25 @@ func main() {
 	// v2 := gglm.NewVec2([]float32{1, 1})
 	// println(v1.Mag())
 	// println(v1.SqrMag())
-	v1 := gglm.NewVec2(nil)
-	v2 := gglm.NewVec2(nil)
-	v1.Add(v2)
-	// v1.Sub(v2)
+	// v1 := gglm.NewVec2(nil)
+	// v2 := gglm.NewVec2(nil)
+	// v1.Add(v2)
 
-	// fmt.Println(gglm.DotVec2(v1, v2))
-	// fmt.Println(v1, v1.X(), v1.Y())
+	m1 := gglm.NewMat4(nil)
 
-	// m := gglm.NewMat2(nil)
-	// fmt.Println(m.String(), m.At(0, 1), m.At(1, 1))
-	// m.Set(0, 1, 55)
-	// m.Set(1, 0, 77)
-	// fmt.Println("\n"+m.String(), m.At(0, 1), m.At(1, 1))
+	// f := []float32{
+	// 	0, 0, 0, 0,
+	// 	0, 0, 0, 0,
+	// 	0, 0, 0, 0,
+	// 	0, 0, 0, 0,
+	// }
+	m2 := gglm.NewMat4(nil)
+
+	println("m1:", m1.String())
+	println("m2:", m2.String())
+
+	m3 := gglm.AddMat4(m1, m2)
+	println("m1:", m1.String())
+	println("m2:", m2.String())
+	println("m3:", m3.String())
 }

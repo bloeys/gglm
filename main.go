@@ -14,28 +14,16 @@ func main() {
 	// v2 := gglm.NewVec2(nil)
 	// v1.Add(v2)
 
-	m1 := gglm.NewMat4(nil)
-
-	f := []float32{
-		-10, 0, 100, 0,
-		0, 0, 0, 0,
-		0, 0, 0, 0,
-		0, 0, 0, 0,
+	m1 := &gglm.Mat4{}
+	m2 := &gglm.Mat4{
+		Data: [16]float32{
+			-10, 0, 100, 0,
+			0, 0, 0, 0,
+			0, 0, 0, 0,
+			0, 0, 0, 0,
+		},
 	}
-	m2 := gglm.NewMat4(f)
+
 	m3 := gglm.AddMat4(m1, m2)
-
 	m2.Add(m3)
-
-	println("m1:", m1.String())
-	println("m2:", m2.String())
-	println("m3:", m3.String())
-
-	v1 := gglm.NewVec3([]float32{5, 4, 2})
-	v2 := gglm.NewVec3([]float32{32, 10, 9})
-	cp := gglm.Cross(v1, v2)
-	dp := gglm.DotVec3(v1, v2)
-	println(cp.String())
-	println(dp)
-
 }

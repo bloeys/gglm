@@ -89,23 +89,30 @@ func (m *Mat4) Mul(m2 *Mat4) {
 	// 08, 09, 10, 11,
 	// 12, 13, 14, 15,
 
+	//Seems to improve performance by ~5% (18ns/op -> 17ns/op).
+	//Works by improving cache usage by putting 0,4,8,12 together instead of faraway in the array?
+	a := m2.Data[0]
+	b := m2.Data[4]
+	c := m2.Data[8]
+	d := m2.Data[12]
+
 	m.Data = [16]float32{
-		m.Data[0]*m2.Data[0] + m.Data[1]*m2.Data[4] + m.Data[2]*m2.Data[8] + m.Data[3]*m2.Data[12],
+		m.Data[0]*a + m.Data[1]*b + m.Data[2]*c + m.Data[3]*d,
 		m.Data[0]*m2.Data[1] + m.Data[1]*m2.Data[5] + m.Data[2]*m2.Data[9] + m.Data[3]*m2.Data[13],
 		m.Data[0]*m2.Data[2] + m.Data[1]*m2.Data[6] + m.Data[2]*m2.Data[10] + m.Data[3]*m2.Data[14],
 		m.Data[0]*m2.Data[3] + m.Data[1]*m2.Data[7] + m.Data[2]*m2.Data[11] + m.Data[3]*m2.Data[15],
 
-		m.Data[4]*m2.Data[0] + m.Data[5]*m2.Data[4] + m.Data[6]*m2.Data[8] + m.Data[7]*m2.Data[12],
+		m.Data[4]*a + m.Data[5]*b + m.Data[6]*c + m.Data[7]*d,
 		m.Data[4]*m2.Data[1] + m.Data[5]*m2.Data[5] + m.Data[6]*m2.Data[9] + m.Data[7]*m2.Data[13],
 		m.Data[4]*m2.Data[2] + m.Data[5]*m2.Data[6] + m.Data[6]*m2.Data[10] + m.Data[7]*m2.Data[14],
 		m.Data[4]*m2.Data[3] + m.Data[5]*m2.Data[7] + m.Data[6]*m2.Data[11] + m.Data[7]*m2.Data[15],
 
-		m.Data[8]*m2.Data[0] + m.Data[9]*m2.Data[4] + m.Data[10]*m2.Data[8] + m.Data[11]*m2.Data[12],
+		m.Data[8]*a + m.Data[9]*b + m.Data[10]*c + m.Data[11]*d,
 		m.Data[8]*m2.Data[1] + m.Data[9]*m2.Data[5] + m.Data[10]*m2.Data[9] + m.Data[11]*m2.Data[13],
 		m.Data[8]*m2.Data[2] + m.Data[9]*m2.Data[6] + m.Data[10]*m2.Data[10] + m.Data[11]*m2.Data[14],
 		m.Data[8]*m2.Data[3] + m.Data[9]*m2.Data[7] + m.Data[10]*m2.Data[11] + m.Data[11]*m2.Data[15],
 
-		m.Data[12]*m2.Data[0] + m.Data[13]*m2.Data[4] + m.Data[14]*m2.Data[8] + m.Data[15]*m2.Data[12],
+		m.Data[12]*a + m.Data[13]*b + m.Data[14]*c + m.Data[15]*d,
 		m.Data[12]*m2.Data[1] + m.Data[13]*m2.Data[5] + m.Data[14]*m2.Data[9] + m.Data[15]*m2.Data[13],
 		m.Data[12]*m2.Data[2] + m.Data[13]*m2.Data[6] + m.Data[14]*m2.Data[10] + m.Data[15]*m2.Data[14],
 		m.Data[12]*m2.Data[3] + m.Data[13]*m2.Data[7] + m.Data[14]*m2.Data[11] + m.Data[15]*m2.Data[15],

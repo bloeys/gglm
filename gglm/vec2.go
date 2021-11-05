@@ -62,6 +62,10 @@ func (v *Vec2) SqrMag() float32 {
 	return v.X()*v.X() + v.Y()*v.Y()
 }
 
+func (v *Vec2) Eq(v2 *Vec2) bool {
+	return v.Data == v2.Data
+}
+
 //AddVec2 v3 = v1 + v2
 func AddVec2(v1, v2 *Vec2) *Vec2 {
 	return &Vec2{

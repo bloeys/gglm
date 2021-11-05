@@ -125,6 +125,14 @@ func (v *Vec4) Set(x, y, z, w float32) {
 	v.Data[3] = w
 }
 
+func (v *Vec4) Normalize() {
+	mag := float32(math.Sqrt(float64(v.Data[0]*v.Data[0] + v.Data[1]*v.Data[1] + v.Data[2]*v.Data[2] + v.Data[3]*v.Data[3])))
+	v.Data[0] /= mag
+	v.Data[1] /= mag
+	v.Data[2] /= mag
+	v.Data[3] /= mag
+}
+
 //AddVec4 v3 = v1 + v2
 func AddVec4(v1, v2 *Vec4) *Vec4 {
 	return &Vec4{

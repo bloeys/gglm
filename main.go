@@ -60,6 +60,10 @@ func main() {
 	v2.Set(1, 2)
 	println(v1.Eq(v2))
 
+	println("V1: " + v1.String())
+	v1.Normalize()
+	println("V1 Normal: " + v1.String())
+
 	//Vec3
 	v3 := &gglm.Vec3{Data: [3]float32{1, 2, 3}}
 	v4 := &gglm.Vec3{Data: [3]float32{4, 5, 6}}
@@ -71,6 +75,11 @@ func main() {
 	println(v3.Eq(v4))
 
 	println(gglm.DotVec3(v3, v4))
+	println(gglm.Cross(v3, v4).String())
+
+	println("V3: " + v3.String())
+	v3.Normalize()
+	println("V3 Normal: " + v3.String())
 
 	//Vec4
 	v5 := &gglm.Vec4{Data: [4]float32{1, 2, 3, 4}}
@@ -83,4 +92,8 @@ func main() {
 	println(v5.Eq(v6))
 
 	println(gglm.DotVec4(v5, v6))
+
+	println("V6: " + v6.String())
+	v6.Normalize()
+	println("V6 Normal: " + v6.String())
 }

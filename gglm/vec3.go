@@ -105,6 +105,13 @@ func (v *Vec3) Set(x, y, z float32) {
 	v.Data[2] = z
 }
 
+func (v *Vec3) Normalize() {
+	mag := float32(math.Sqrt(float64(v.X()*v.X() + v.Y()*v.Y() + v.Z()*v.Z())))
+	v.Data[0] /= mag
+	v.Data[1] /= mag
+	v.Data[2] /= mag
+}
+
 //AddVec3 v3 = v1 + v2
 func AddVec3(v1, v2 *Vec3) *Vec3 {
 	return &Vec3{

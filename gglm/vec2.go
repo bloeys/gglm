@@ -87,6 +87,12 @@ func (v *Vec2) Set(x, y float32) {
 	v.Data[1] = y
 }
 
+func (v *Vec2) Normalize() {
+	mag := v.Mag()
+	v.Data[0] /= mag
+	v.Data[1] /= mag
+}
+
 //AddVec2 v3 = v1 + v2
 func AddVec2(v1, v2 *Vec2) *Vec2 {
 	return &Vec2{

@@ -49,10 +49,11 @@ func TestSubMat2(t *testing.T) {
 			1, 2,
 			3, 4,
 		}}
-	m2 := &gglm.Mat2{Data: [4]float32{
-		5, 6,
-		7, 8,
-	}}
+	m2 := &gglm.Mat2{
+		Data: [4]float32{
+			5, 6,
+			7, 8,
+		}}
 
 	result := gglm.SubMat2(m1, m2)
 	m1.Sub(m2)
@@ -79,10 +80,11 @@ func TestAddMat2(t *testing.T) {
 			1, 2,
 			3, 4,
 		}}
-	m2 := &gglm.Mat2{Data: [4]float32{
-		5, 6,
-		7, 8,
-	}}
+	m2 := &gglm.Mat2{
+		Data: [4]float32{
+			5, 6,
+			7, 8,
+		}}
 
 	result := gglm.AddMat2(m1, m2)
 	m1.Add(m2)
@@ -109,10 +111,11 @@ func TestMulMat2(t *testing.T) {
 			1, 2,
 			3, 4,
 		}}
-	m2 := &gglm.Mat2{Data: [4]float32{
-		5, 6,
-		7, 8,
-	}}
+	m2 := &gglm.Mat2{
+		Data: [4]float32{
+			5, 6,
+			7, 8,
+		}}
 
 	result := gglm.MulMat2(m1, m2)
 	m1.Mul(m2)

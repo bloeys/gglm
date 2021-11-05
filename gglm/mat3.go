@@ -63,6 +63,23 @@ func (m *Mat3) Sub(m2 *Mat3) {
 	m.Data[8] -= m2.Data[8]
 }
 
+//Mul m *= m2
+func (m *Mat3) Mul(m2 *Mat3) {
+	m.Data = [9]float32{
+		m.Data[0]*m2.Data[0] + m.Data[1]*m2.Data[3] + m.Data[2]*m2.Data[6],
+		m.Data[0]*m2.Data[1] + m.Data[1]*m2.Data[4] + m.Data[2]*m2.Data[7],
+		m.Data[0]*m2.Data[2] + m.Data[1]*m2.Data[5] + m.Data[2]*m2.Data[8],
+
+		m.Data[3]*m2.Data[0] + m.Data[4]*m2.Data[3] + m.Data[5]*m2.Data[6],
+		m.Data[3]*m2.Data[1] + m.Data[4]*m2.Data[4] + m.Data[5]*m2.Data[7],
+		m.Data[3]*m2.Data[2] + m.Data[4]*m2.Data[5] + m.Data[5]*m2.Data[8],
+
+		m.Data[6]*m2.Data[0] + m.Data[7]*m2.Data[3] + m.Data[8]*m2.Data[6],
+		m.Data[6]*m2.Data[1] + m.Data[7]*m2.Data[4] + m.Data[8]*m2.Data[7],
+		m.Data[6]*m2.Data[2] + m.Data[7]*m2.Data[5] + m.Data[8]*m2.Data[8],
+	}
+}
+
 //Scale m *= x (element wise multiplication)
 func (m *Mat3) Scale(x float32) {
 

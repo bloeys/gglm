@@ -44,11 +44,12 @@ func (m *Mat2) Sub(m2 *Mat2) {
 	m.Data[3] -= m2.Data[3]
 }
 
-//Add m *= m2
+//Mul m *= m2
 func (m *Mat2) Mul(m2 *Mat2) {
 	m.Data = [4]float32{
 		m.Data[0]*m2.Data[0] + m.Data[1]*m2.Data[2],
 		m.Data[0]*m2.Data[1] + m.Data[1]*m2.Data[3],
+
 		m.Data[2]*m2.Data[0] + m.Data[3]*m2.Data[2],
 		m.Data[2]*m2.Data[1] + m.Data[3]*m2.Data[3],
 	}
@@ -86,11 +87,13 @@ func SubMat2(m1, m2 *Mat2) *Mat2 {
 	}
 }
 
+//MulMat2 m3 = m1 * m2
 func MulMat2(m1, m2 *Mat2) *Mat2 {
 	return &Mat2{
 		Data: [4]float32{
 			m1.Data[0]*m2.Data[0] + m1.Data[1]*m2.Data[2],
 			m1.Data[0]*m2.Data[1] + m1.Data[1]*m2.Data[3],
+
 			m1.Data[2]*m2.Data[0] + m1.Data[3]*m2.Data[2],
 			m1.Data[2]*m2.Data[1] + m1.Data[3]*m2.Data[3],
 		},

@@ -7,8 +7,8 @@ import (
 )
 
 var (
-	dotVec2Result  float32 = 0
-	dotVec3Result  float32 = 0
+	dotVec2Result  float32
+	dotVec3Result  float32
 	crossResult    *gglm.Vec3
 	mulMat4Vec4Res *gglm.Vec4
 )

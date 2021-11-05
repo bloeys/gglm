@@ -73,3 +73,36 @@ func SqrDistVec4(v1, v2 *Vec4) float32 {
 	w := v1.Data[3] - v2.Data[3]
 	return x*x + y*y + z*z + w*w
 }
+
+//ReflectVec2 returns the reflected vector of the incoming vector 'v', and the surface normal 'n'.
+//
+//Note: n must be normalized or you will get wrong results
+func ReflectVec2(v, n *Vec2) *Vec2 {
+
+	//reflectedVec = v − 2*dot(v, norm)*norm
+	d := 2 * (v.Data[0]*n.Data[0] + v.Data[1]*n.Data[1])
+
+	return &Vec2{
+		Data: [2]float32{
+			v.Data[0] - d*n.Data[0],
+			v.Data[1] - d*n.Data[1],
+		},
+	}
+}
+
+//ReflectVec3 returns the reflected vector of the incoming vector 'v', and the surface normal 'n'.
+//
+//Note: n must be normalized or you will get wrong results
+func ReflectVec3(v, n *Vec3) *Vec3 {
+
+	//reflectedVec = v − 2*dot(v, norm)*norm
+	d := 2 * (v.Data[0]*n.Data[0] + v.Data[1]*n.Data[1] + v.Data[2]*n.Data[2])
+
+	return &Vec3{
+		Data: [3]float32{
+			v.Data[0] - d*n.Data[0],
+			v.Data[1] - d*n.Data[1],
+			v.Data[2] - d*n.Data[2],
+		},
+	}
+}

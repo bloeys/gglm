@@ -120,4 +120,10 @@ func main() {
 	vec3A := gglm.Vec3{Data: [3]float32{1, 2, 3}}
 	lol := gglm.MulMat3Vec3(&mat3A, &vec3A)
 	println(lol.String())
+
+	//ReflectVec2
+	vec2B := &gglm.Vec2{Data: [2]float32{4, 5}}
+	normA := &gglm.Vec2{Data: [2]float32{0, 1}}
+	rVec2A := gglm.ReflectVec2(vec2B, normA)
+	println(rVec2A.String())
 }

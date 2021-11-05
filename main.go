@@ -20,6 +20,8 @@ func main() {
 		},
 	}
 
+	m3 := gglm.MulMat3(m1, m2)
 	m1.Mul(m2)
 	println(m1.String())
+	println(m3.String())
 }

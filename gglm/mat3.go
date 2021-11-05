@@ -134,6 +134,25 @@ func SubMat3(m1, m2 *Mat3) *Mat3 {
 	}
 }
 
+//MulMat3 m3 = m1 * m2
+func MulMat3(m1, m2 *Mat3) *Mat3 {
+	return &Mat3{
+		Data: [9]float32{
+			m1.Data[0]*m2.Data[0] + m1.Data[1]*m2.Data[3] + m1.Data[2]*m2.Data[6],
+			m1.Data[0]*m2.Data[1] + m1.Data[1]*m2.Data[4] + m1.Data[2]*m2.Data[7],
+			m1.Data[0]*m2.Data[2] + m1.Data[1]*m2.Data[5] + m1.Data[2]*m2.Data[8],
+
+			m1.Data[3]*m2.Data[0] + m1.Data[4]*m2.Data[3] + m1.Data[5]*m2.Data[6],
+			m1.Data[3]*m2.Data[1] + m1.Data[4]*m2.Data[4] + m1.Data[5]*m2.Data[7],
+			m1.Data[3]*m2.Data[2] + m1.Data[4]*m2.Data[5] + m1.Data[5]*m2.Data[8],
+
+			m1.Data[6]*m2.Data[0] + m1.Data[7]*m2.Data[3] + m1.Data[8]*m2.Data[6],
+			m1.Data[6]*m2.Data[1] + m1.Data[7]*m2.Data[4] + m1.Data[8]*m2.Data[7],
+			m1.Data[6]*m2.Data[2] + m1.Data[7]*m2.Data[5] + m1.Data[8]*m2.Data[8],
+		},
+	}
+}
+
 //NewMat3Id returns the 3x3 identity matrix
 func NewMat3Id() *Mat3 {
 	return &Mat3{

@@ -49,4 +49,5 @@ func main() {
 	m4.Mul(m5)
 	println(m4.String())
 	println(m6.String())
+	println(m4.Eq(m6))
 }

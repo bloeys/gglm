@@ -102,6 +102,10 @@ func (m *Mat3) Scale(x float32) {
 	m.Data[8] *= x
 }
 
+func (m *Mat3) Eq(m2 *Mat3) bool {
+	return m.Data == m2.Data
+}
+
 //AddMat3 m3 = m1 + m2
 func AddMat3(m1, m2 *Mat3) *Mat3 {
 	return &Mat3{

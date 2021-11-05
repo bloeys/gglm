@@ -11,7 +11,7 @@ type Mat3 struct {
 	Data [9]float32
 }
 
-func (m *Mat3) At(row, col int) float32 {
+func (m *Mat3) Get(row, col int) float32 {
 	return m.Data[row*3+col]
 }
 

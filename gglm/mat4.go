@@ -11,7 +11,7 @@ type Mat4 struct {
 	Data [16]float32
 }
 
-func (m *Mat4) At(row, col int) float32 {
+func (m *Mat4) Get(row, col int) float32 {
 	return m.Data[row*4+col]
 }
 

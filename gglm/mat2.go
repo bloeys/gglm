@@ -104,6 +104,16 @@ func MulMat2(m1, m2 *Mat2) *Mat2 {
 	}
 }
 
+//MulMat2Vec2 v2 = m1 * v1
+func MulMat2Vec2(m1 *Mat2, v1 *Vec2) *Vec2 {
+	return &Vec2{
+		Data: [2]float32{
+			m1.Data[0]*v1.Data[0] + m1.Data[1]*v1.Data[1],
+			m1.Data[2]*v1.Data[0] + m1.Data[3]*v1.Data[1],
+		},
+	}
+}
+
 //NewMat2Id returns the 2x2 identity matrix
 func NewMat2Id() *Mat2 {
 	return &Mat2{

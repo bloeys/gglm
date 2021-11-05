@@ -234,6 +234,18 @@ func MulMat4(m1, m2 *Mat4) *Mat4 {
 	}
 }
 
+//MulMat4Vec4 v2 = m1 * v1
+func MulMat4Vec4(m1 *Mat4, v1 *Vec4) *Vec4 {
+	return &Vec4{
+		Data: [4]float32{
+			m1.Data[0]*v1.Data[0] + m1.Data[1]*v1.Data[1] + m1.Data[2]*v1.Data[2] + m1.Data[3]*v1.Data[3],
+			m1.Data[4]*v1.Data[0] + m1.Data[5]*v1.Data[1] + m1.Data[6]*v1.Data[2] + m1.Data[7]*v1.Data[3],
+			m1.Data[8]*v1.Data[0] + m1.Data[9]*v1.Data[1] + m1.Data[10]*v1.Data[2] + m1.Data[11]*v1.Data[3],
+			m1.Data[12]*v1.Data[0] + m1.Data[13]*v1.Data[1] + m1.Data[14]*v1.Data[2] + m1.Data[15]*v1.Data[3],
+		},
+	}
+}
+
 //NewMat4Id returns the 4x4 identity matrix
 func NewMat4Id() *Mat4 {
 	return &Mat4{

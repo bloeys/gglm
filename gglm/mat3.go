@@ -163,6 +163,17 @@ func MulMat3(m1, m2 *Mat3) *Mat3 {
 	}
 }
 
+//MulMat3Vec3 v2 = m1 * v1
+func MulMat3Vec3(m1 *Mat3, v1 *Vec3) *Vec3 {
+	return &Vec3{
+		Data: [3]float32{
+			m1.Data[0]*v1.Data[0] + m1.Data[1]*v1.Data[1] + m1.Data[2]*v1.Data[2],
+			m1.Data[3]*v1.Data[0] + m1.Data[4]*v1.Data[1] + m1.Data[5]*v1.Data[2],
+			m1.Data[6]*v1.Data[0] + m1.Data[7]*v1.Data[1] + m1.Data[8]*v1.Data[2],
+		},
+	}
+}
+
 //NewMat3Id returns the 3x3 identity matrix
 func NewMat3Id() *Mat3 {
 	return &Mat3{

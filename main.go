@@ -50,4 +50,9 @@ func main() {
 	println(m4.String())
 	println(m6.String())
 	println(m4.Eq(m6))
+
+	v1 := &gglm.Vec2{Data: [2]float32{1, 2}}
+	v2 := &gglm.Vec2{Data: [2]float32{3, 4}}
+	println(gglm.DistVec2(v1, v2))
+	println(gglm.SqrDistVec2(v2, v1))
 }

@@ -80,6 +80,38 @@ func (m *Mat4) Sub(m2 *Mat4) {
 	m.Data[15] -= m2.Data[15]
 }
 
+//Mul m *= m2
+func (m *Mat4) Mul(m2 *Mat4) {
+
+	//Indices:
+	// 00, 01, 02, 03,
+	// 04, 05, 06, 07,
+	// 08, 09, 10, 11,
+	// 12, 13, 14, 15,
+
+	m.Data = [16]float32{
+		m.Data[0]*m2.Data[0] + m.Data[1]*m2.Data[4] + m.Data[2]*m2.Data[8] + m.Data[3]*m2.Data[12],
+		m.Data[0]*m2.Data[1] + m.Data[1]*m2.Data[5] + m.Data[2]*m2.Data[9] + m.Data[3]*m2.Data[13],
+		m.Data[0]*m2.Data[2] + m.Data[1]*m2.Data[6] + m.Data[2]*m2.Data[10] + m.Data[3]*m2.Data[14],
+		m.Data[0]*m2.Data[3] + m.Data[1]*m2.Data[7] + m.Data[2]*m2.Data[11] + m.Data[3]*m2.Data[15],
+
+		m.Data[4]*m2.Data[0] + m.Data[5]*m2.Data[4] + m.Data[6]*m2.Data[8] + m.Data[7]*m2.Data[12],
+		m.Data[4]*m2.Data[1] + m.Data[5]*m2.Data[5] + m.Data[6]*m2.Data[9] + m.Data[7]*m2.Data[13],
+		m.Data[4]*m2.Data[2] + m.Data[5]*m2.Data[6] + m.Data[6]*m2.Data[10] + m.Data[7]*m2.Data[14],
+		m.Data[4]*m2.Data[3] + m.Data[5]*m2.Data[7] + m.Data[6]*m2.Data[11] + m.Data[7]*m2.Data[15],
+
+		m.Data[8]*m2.Data[0] + m.Data[9]*m2.Data[4] + m.Data[10]*m2.Data[8] + m.Data[11]*m2.Data[12],
+		m.Data[8]*m2.Data[1] + m.Data[9]*m2.Data[5] + m.Data[10]*m2.Data[9] + m.Data[11]*m2.Data[13],
+		m.Data[8]*m2.Data[2] + m.Data[9]*m2.Data[6] + m.Data[10]*m2.Data[10] + m.Data[11]*m2.Data[14],
+		m.Data[8]*m2.Data[3] + m.Data[9]*m2.Data[7] + m.Data[10]*m2.Data[11] + m.Data[11]*m2.Data[15],
+
+		m.Data[12]*m2.Data[0] + m.Data[13]*m2.Data[4] + m.Data[14]*m2.Data[8] + m.Data[15]*m2.Data[12],
+		m.Data[12]*m2.Data[1] + m.Data[13]*m2.Data[5] + m.Data[14]*m2.Data[9] + m.Data[15]*m2.Data[13],
+		m.Data[12]*m2.Data[2] + m.Data[13]*m2.Data[6] + m.Data[14]*m2.Data[10] + m.Data[15]*m2.Data[14],
+		m.Data[12]*m2.Data[3] + m.Data[13]*m2.Data[7] + m.Data[14]*m2.Data[11] + m.Data[15]*m2.Data[15],
+	}
+}
+
 //Scale m *= x (element wise multiplication)
 func (m *Mat4) Scale(x float32) {
 
@@ -154,6 +186,33 @@ func SubMat4(m1, m2 *Mat4) *Mat4 {
 			m1.Data[13] - m2.Data[13],
 			m1.Data[14] - m2.Data[14],
 			m1.Data[15] - m2.Data[15],
+		},
+	}
+}
+
+//MulMat4 m3 = m1 * m2
+func MulMat4(m1, m2 *Mat4) *Mat4 {
+	return &Mat4{
+		Data: [16]float32{
+			m1.Data[0]*m2.Data[0] + m1.Data[1]*m2.Data[4] + m1.Data[2]*m2.Data[8] + m1.Data[3]*m2.Data[12],
+			m1.Data[0]*m2.Data[1] + m1.Data[1]*m2.Data[5] + m1.Data[2]*m2.Data[9] + m1.Data[3]*m2.Data[13],
+			m1.Data[0]*m2.Data[2] + m1.Data[1]*m2.Data[6] + m1.Data[2]*m2.Data[10] + m1.Data[3]*m2.Data[14],
+			m1.Data[0]*m2.Data[3] + m1.Data[1]*m2.Data[7] + m1.Data[2]*m2.Data[11] + m1.Data[3]*m2.Data[15],
+
+			m1.Data[4]*m2.Data[0] + m1.Data[5]*m2.Data[4] + m1.Data[6]*m2.Data[8] + m1.Data[7]*m2.Data[12],
+			m1.Data[4]*m2.Data[1] + m1.Data[5]*m2.Data[5] + m1.Data[6]*m2.Data[9] + m1.Data[7]*m2.Data[13],
+			m1.Data[4]*m2.Data[2] + m1.Data[5]*m2.Data[6] + m1.Data[6]*m2.Data[10] + m1.Data[7]*m2.Data[14],
+			m1.Data[4]*m2.Data[3] + m1.Data[5]*m2.Data[7] + m1.Data[6]*m2.Data[11] + m1.Data[7]*m2.Data[15],
+
+			m1.Data[8]*m2.Data[0] + m1.Data[9]*m2.Data[4] + m1.Data[10]*m2.Data[8] + m1.Data[11]*m2.Data[12],
+			m1.Data[8]*m2.Data[1] + m1.Data[9]*m2.Data[5] + m1.Data[10]*m2.Data[9] + m1.Data[11]*m2.Data[13],
+			m1.Data[8]*m2.Data[2] + m1.Data[9]*m2.Data[6] + m1.Data[10]*m2.Data[10] + m1.Data[11]*m2.Data[14],
+			m1.Data[8]*m2.Data[3] + m1.Data[9]*m2.Data[7] + m1.Data[10]*m2.Data[11] + m1.Data[11]*m2.Data[15],
+
+			m1.Data[12]*m2.Data[0] + m1.Data[13]*m2.Data[4] + m1.Data[14]*m2.Data[8] + m1.Data[15]*m2.Data[12],
+			m1.Data[12]*m2.Data[1] + m1.Data[13]*m2.Data[5] + m1.Data[14]*m2.Data[9] + m1.Data[15]*m2.Data[13],
+			m1.Data[12]*m2.Data[2] + m1.Data[13]*m2.Data[6] + m1.Data[14]*m2.Data[10] + m1.Data[15]*m2.Data[14],
+			m1.Data[12]*m2.Data[3] + m1.Data[13]*m2.Data[7] + m1.Data[14]*m2.Data[11] + m1.Data[15]*m2.Data[15],
 		},
 	}
 }

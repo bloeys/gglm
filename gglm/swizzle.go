@@ -15,11 +15,10 @@ type Swizzle3 interface {
 	Swizzle2
 	Z() float32
 	B() float32
+}
 
-	// XYZ
-	// YXZ
-	// XZY
-	// YZX
-	// ZXY
-	// ZYX
+type Swizzle4 interface {
+	Swizzle3
+	W() float32
+	A() float32
 }

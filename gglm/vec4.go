@@ -44,6 +44,38 @@ func (v *Vec4) A() float32 {
 	return v.Data[3]
 }
 
+func (v *Vec4) SetX(f float32) {
+	v.Data[0] = f
+}
+
+func (v *Vec4) SetR(f float32) {
+	v.Data[0] = f
+}
+
+func (v *Vec4) SetY(f float32) {
+	v.Data[1] = f
+}
+
+func (v *Vec4) SetG(f float32) {
+	v.Data[1] = f
+}
+
+func (v *Vec4) SetZ(f float32) {
+	v.Data[2] = f
+}
+
+func (v *Vec4) SetB(f float32) {
+	v.Data[2] = f
+}
+
+func (v *Vec4) SetW(f float32) {
+	v.Data[3] = f
+}
+
+func (v *Vec4) SetA(f float32) {
+	v.Data[3] = f
+}
+
 func (v *Vec4) String() string {
 	return fmt.Sprintf("(%f, %f, %f, %f)", v.X(), v.Y(), v.Z(), v.W())
 }
@@ -84,6 +116,13 @@ func (v *Vec4) SqrMag() float32 {
 
 func (v *Vec4) Eq(v2 *Vec4) bool {
 	return v.Data == v2.Data
+}
+
+func (v *Vec4) Set(x, y, z, w float32) {
+	v.Data[0] = x
+	v.Data[1] = y
+	v.Data[2] = z
+	v.Data[3] = w
 }
 
 //AddVec4 v3 = v1 + v2

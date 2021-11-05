@@ -55,4 +55,8 @@ func main() {
 	v2 := &gglm.Vec2{Data: [2]float32{3, 4}}
 	println(gglm.DistVec2(v1, v2))
 	println(gglm.SqrDistVec2(v2, v1))
+
+	println(v1.Eq(v2))
+	v2.Set(1, 2)
+	println(v1.Eq(v2))
 }

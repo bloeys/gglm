@@ -30,6 +30,22 @@ func (v *Vec2) G() float32 {
 	return v.Data[1]
 }
 
+func (v *Vec2) SetX(f float32) {
+	v.Data[0] = f
+}
+
+func (v *Vec2) SetR(f float32) {
+	v.Data[0] = f
+}
+
+func (v *Vec2) SetY(f float32) {
+	v.Data[1] = f
+}
+
+func (v *Vec2) SetG(f float32) {
+	v.Data[1] = f
+}
+
 func (v *Vec2) String() string {
 	return fmt.Sprintf("(%f, %f)", v.X(), v.Y())
 }
@@ -64,6 +80,11 @@ func (v *Vec2) SqrMag() float32 {
 
 func (v *Vec2) Eq(v2 *Vec2) bool {
 	return v.Data == v2.Data
+}
+
+func (v *Vec2) Set(x, y float32) {
+	v.Data[0] = x
+	v.Data[1] = y
 }
 
 //AddVec2 v3 = v1 + v2

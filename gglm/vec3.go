@@ -36,6 +36,30 @@ func (v *Vec3) B() float32 {
 	return v.Data[2]
 }
 
+func (v *Vec3) SetX(f float32) {
+	v.Data[0] = f
+}
+
+func (v *Vec3) SetR(f float32) {
+	v.Data[0] = f
+}
+
+func (v *Vec3) SetY(f float32) {
+	v.Data[1] = f
+}
+
+func (v *Vec3) SetG(f float32) {
+	v.Data[1] = f
+}
+
+func (v *Vec3) SetZ(f float32) {
+	v.Data[2] = f
+}
+
+func (v *Vec3) SetB(f float32) {
+	v.Data[2] = f
+}
+
 func (v *Vec3) String() string {
 	return fmt.Sprintf("(%f, %f, %f)", v.X(), v.Y(), v.Z())
 }
@@ -73,6 +97,12 @@ func (v *Vec3) SqrMag() float32 {
 
 func (v *Vec3) Eq(v2 *Vec3) bool {
 	return v.Data == v2.Data
+}
+
+func (v *Vec3) Set(x, y, z float32) {
+	v.Data[0] = x
+	v.Data[1] = y
+	v.Data[2] = z
 }
 
 //AddVec3 v3 = v1 + v2

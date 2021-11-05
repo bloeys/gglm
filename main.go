@@ -96,4 +96,28 @@ func main() {
 	println("V6: " + v6.String())
 	v6.Normalize()
 	println("V6 Normal: " + v6.String())
+
+	//Mat2Vec2
+	mat2A := gglm.Mat2{
+		Data: [4]float32{
+			1, 2,
+			3, 4,
+		},
+	}
+
+	vec2A := gglm.Vec2{Data: [2]float32{1, 2}}
+	println(gglm.MulMat2Vec2(&mat2A, &vec2A).String())
+
+	//Mat3Vec3
+	mat3A := gglm.Mat3{
+		Data: [9]float32{
+			1, 2, 3,
+			4, 5, 6,
+			7, 8, 9,
+		},
+	}
+
+	vec3A := gglm.Vec3{Data: [3]float32{1, 2, 3}}
+	lol := gglm.MulMat3Vec3(&mat3A, &vec3A)
+	println(lol.String())
 }

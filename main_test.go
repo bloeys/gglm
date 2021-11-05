@@ -7,9 +7,10 @@ import (
 )
 
 var (
-	dotVec2Result float32 = 0
-	dotVec3Result float32 = 0
-	crossResult   *gglm.Vec3
+	dotVec2Result  float32 = 0
+	dotVec3Result  float32 = 0
+	crossResult    *gglm.Vec3
+	mulMat4Vec4Res *gglm.Vec4
 )
 
 func BenchmarkDotVec2(b *testing.B) {
@@ -69,5 +70,15 @@ func BenchmarkMulMat4(b *testing.B) {
 
 	for i := 0; i < b.N; i++ {
 		m1.Mul(m2)
+	}
+}
+
+func BenchmarkMulMat4Vec4(b *testing.B) {
+
+	m1 := gglm.NewMat4Id()
+	v1 := gglm.Vec4{}
+
+	for i := 0; i < b.N; i++ {
+		mulMat4Vec4Res = gglm.MulMat4Vec4(m1, &v1)
 	}
 }

@@ -118,12 +118,22 @@ func main() {
 	}
 
 	vec3A := gglm.Vec3{Data: [3]float32{1, 2, 3}}
-	lol := gglm.MulMat3Vec3(&mat3A, &vec3A)
-	println(lol.String())
+	mm3v3 := gglm.MulMat3Vec3(&mat3A, &vec3A)
+	println(mm3v3.String())
 
 	//ReflectVec2
 	vec2B := &gglm.Vec2{Data: [2]float32{4, 5}}
 	normA := &gglm.Vec2{Data: [2]float32{0, 1}}
 	rVec2A := gglm.ReflectVec2(vec2B, normA)
 	println(rVec2A.String())
+
+	//Quaternion
+	vRot := &gglm.Vec3{Data: [3]float32{60, 30, 20}}
+	q := gglm.NewQuatEuler(vRot.AsRad())
+	println("\n" + vRot.AsRad().String())
+	println(q.String(), "\n", q.Mag())
+
+	q = gglm.NewQuatAngleAxis(60*gglm.Deg2Rad, vRot.Normalize())
+	println("\n" + vRot.Normalize().String())
+	println(q.String())
 }

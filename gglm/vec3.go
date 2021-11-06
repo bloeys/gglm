@@ -105,11 +105,24 @@ func (v *Vec3) Set(x, y, z float32) {
 	v.Data[2] = z
 }
 
-func (v *Vec3) Normalize() {
+//Normalize normalizes this vector and returns it (doesn't copy)
+func (v *Vec3) Normalize() *Vec3 {
 	mag := float32(math.Sqrt(float64(v.X()*v.X() + v.Y()*v.Y() + v.Z()*v.Z())))
 	v.Data[0] /= mag
 	v.Data[1] /= mag
 	v.Data[2] /= mag
+
+	return v
+}
+
+func (v *Vec3) AsRad() *Vec3 {
+	return &Vec3{
+		Data: [3]float32{
+			v.Data[0] * Deg2Rad,
+			v.Data[1] * Deg2Rad,
+			v.Data[2] * Deg2Rad,
+		},
+	}
 }
 
 //AddVec3 v3 = v1 + v2

@@ -29,6 +29,10 @@ func (t *TrMat) Mul(m *TrMat) *TrMat {
 	return t
 }
 
+func (t *TrMat) Eq(m *TrMat) bool {
+	return t.Data == m.Data
+}
+
 func (t *TrMat) Clone() *TrMat {
 	return &TrMat{
 		Mat4: *t.Mat4.Clone(),
@@ -92,7 +96,7 @@ func NewRotMat(q *Quat) *TrMat {
 	}
 }
 
-func NewTransformMatId() *TrMat {
+func NewTrMatId() *TrMat {
 	return &TrMat{
 		Mat4: *NewMat4Id(),
 	}

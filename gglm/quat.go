@@ -11,6 +11,11 @@ type Quat struct {
 	Vec4
 }
 
+//Eq checks for exact equality
+func (q *Quat) Eq(q2 *Quat) bool {
+	return q.Data == q2.Data
+}
+
 //Euler takes rotations in radians and produces a rotation that
 //rotates around the z-axis, y-axis and lastly x-axis.
 func NewQuatEuler(v *Vec3) *Quat {

@@ -142,7 +142,7 @@ func main() {
 	rotMat := gglm.NewRotMat(gglm.NewQuatEuler(gglm.NewVec3(60, 30, 20).AsRad()))
 	scaleMat := gglm.NewScaleMat(gglm.NewVec3(1, 1, 1))
 
-	modelMat := gglm.NewTransformMatId()
+	modelMat := gglm.NewTrMatId()
 	modelMat.Mul(translationMat.Mul(rotMat.Mul(scaleMat)))
 
 	println("\n\n\n", modelMat.String())
@@ -159,4 +159,9 @@ func main() {
 	trMatClone.Scale(gglm.NewVec3(2, 2, 2))
 	trMatClone.Translate(gglm.NewVec3(9, 0, 0))
 	println("\n\n", trMatOrig.String(), "; ", trMatClone.String())
+
+	//Quat geo
+	q1 := gglm.NewQuatEuler(gglm.NewVec3(180, 0, 0).AsRad())
+	q2 := gglm.NewQuatEuler(gglm.NewVec3(0, 180, 0).AsRad())
+	println(gglm.AngleQuat(q1, q2) * gglm.Rad2Deg)
 }

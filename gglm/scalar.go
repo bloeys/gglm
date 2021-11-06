@@ -19,8 +19,16 @@ func Sin32(x float32) float32 {
 	return float32(math.Sin(float64(x)))
 }
 
+func Asin32(x float32) float32 {
+	return float32(math.Asin(float64(x)))
+}
+
 func Cos32(x float32) float32 {
 	return float32(math.Cos(float64(x)))
+}
+
+func Acos32(x float32) float32 {
+	return float32(math.Acos(float64(x)))
 }
 
 func Sincos32(x float32) (sinx, cosx float32) {

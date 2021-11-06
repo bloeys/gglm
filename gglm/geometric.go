@@ -14,6 +14,10 @@ func DotVec4(v1, v2 *Vec4) float32 {
 	return v1.X()*v2.X() + v1.Y()*v2.Y() + v1.Z()*v2.Z() + v1.W()*v2.W()
 }
 
+func DotQuat(q1, q2 *Quat) float32 {
+	return q1.X()*q2.X() + q1.Y()*q2.Y() + q1.Z()*q2.Z() + q1.W()*q2.W()
+}
+
 func Cross(v1, v2 *Vec3) *Vec3 {
 	return &Vec3{
 		Data: [3]float32{
@@ -105,4 +109,9 @@ func ReflectVec3(v, n *Vec3) *Vec3 {
 			v.Data[2] - d*n.Data[2],
 		},
 	}
+}
+
+//AngleQuat returns the angle between the two quaternions in radians
+func AngleQuat(q1, q2 *Quat) float32 {
+	return Acos32(DotQuat(q1, q2))
 }

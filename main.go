@@ -136,4 +136,27 @@ func main() {
 	q = gglm.NewQuatAngleAxis(60*gglm.Deg2Rad, vRot.Normalize())
 	println("\n" + vRot.Normalize().String())
 	println(q.String())
+
+	//Transform
+	translationMat := gglm.NewTranslationMat(&gglm.Vec3{Data: [3]float32{1, 2, 3}})
+	rotMat := gglm.NewRotMat(gglm.NewQuatEuler(gglm.NewVec3(60, 30, 20).AsRad()))
+	scaleMat := gglm.NewScaleMat(gglm.NewVec3(1, 1, 1))
+
+	modelMat := gglm.NewTransformMatId()
+	modelMat.Mul(translationMat.Mul(rotMat.Mul(scaleMat)))
+
+	println("\n\n\n", modelMat.String())
+
+	//Clone Vec2
+	v2Orig := gglm.Vec2{Data: [2]float32{1, 2}}
+	v2Clone := v2Orig.Clone()
+	v2Clone.SetX(99)
+	println("\n\n", v2Orig.String(), "; ", v2Clone.String())
+
+	//Clone TrMat
+	trMatOrig := gglm.NewTranslationMat(gglm.NewVec3(1, 2, 3))
+	trMatClone := trMatOrig.Clone()
+	trMatClone.Scale(gglm.NewVec3(2, 2, 2))
+	trMatClone.Translate(gglm.NewVec3(9, 0, 0))
+	println("\n\n", trMatOrig.String(), "; ", trMatClone.String())
 }

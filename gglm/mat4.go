@@ -33,7 +33,7 @@ func (m *Mat4) String() string {
 }
 
 //Add m += m2
-func (m *Mat4) Add(m2 *Mat4) {
+func (m *Mat4) Add(m2 *Mat4) *Mat4 {
 
 	m.Data[0] += m2.Data[0]
 	m.Data[1] += m2.Data[1]
@@ -54,10 +54,12 @@ func (m *Mat4) Add(m2 *Mat4) {
 	m.Data[13] += m2.Data[13]
 	m.Data[14] += m2.Data[14]
 	m.Data[15] += m2.Data[15]
+
+	return m
 }
 
 //Add m -= m2
-func (m *Mat4) Sub(m2 *Mat4) {
+func (m *Mat4) Sub(m2 *Mat4) *Mat4 {
 
 	m.Data[0] -= m2.Data[0]
 	m.Data[1] -= m2.Data[1]
@@ -78,10 +80,11 @@ func (m *Mat4) Sub(m2 *Mat4) {
 	m.Data[13] -= m2.Data[13]
 	m.Data[14] -= m2.Data[14]
 	m.Data[15] -= m2.Data[15]
+	return m
 }
 
 //Mul m *= m2
-func (m *Mat4) Mul(m2 *Mat4) {
+func (m *Mat4) Mul(m2 *Mat4) *Mat4 {
 
 	//Indices:
 	// 00, 01, 02, 03,
@@ -117,10 +120,12 @@ func (m *Mat4) Mul(m2 *Mat4) {
 		m.Data[12]*m2.Data[2] + m.Data[13]*m2.Data[6] + m.Data[14]*m2.Data[10] + m.Data[15]*m2.Data[14],
 		m.Data[12]*m2.Data[3] + m.Data[13]*m2.Data[7] + m.Data[14]*m2.Data[11] + m.Data[15]*m2.Data[15],
 	}
+
+	return m
 }
 
 //Scale m *= x (element wise multiplication)
-func (m *Mat4) Scale(x float32) {
+func (m *Mat4) Scale(x float32) *Mat4 {
 
 	m.Data[0] *= x
 	m.Data[1] *= x
@@ -141,6 +146,11 @@ func (m *Mat4) Scale(x float32) {
 	m.Data[13] *= x
 	m.Data[14] *= x
 	m.Data[15] *= x
+	return m
+}
+
+func (v *Mat4) Clone() *Mat4 {
+	return &Mat4{Data: v.Data}
 }
 
 func (m *Mat4) Eq(m2 *Mat4) bool {

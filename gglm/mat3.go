@@ -32,7 +32,7 @@ func (m *Mat3) String() string {
 }
 
 //Add m += m2
-func (m *Mat3) Add(m2 *Mat3) {
+func (m *Mat3) Add(m2 *Mat3) *Mat3 {
 
 	m.Data[0] += m2.Data[0]
 	m.Data[1] += m2.Data[1]
@@ -45,10 +45,11 @@ func (m *Mat3) Add(m2 *Mat3) {
 	m.Data[6] += m2.Data[6]
 	m.Data[7] += m2.Data[7]
 	m.Data[8] += m2.Data[8]
+	return m
 }
 
 //Add m -= m2
-func (m *Mat3) Sub(m2 *Mat3) {
+func (m *Mat3) Sub(m2 *Mat3) *Mat3 {
 
 	m.Data[0] -= m2.Data[0]
 	m.Data[1] -= m2.Data[1]
@@ -61,10 +62,11 @@ func (m *Mat3) Sub(m2 *Mat3) {
 	m.Data[6] -= m2.Data[6]
 	m.Data[7] -= m2.Data[7]
 	m.Data[8] -= m2.Data[8]
+	return m
 }
 
 //Mul m *= m2
-func (m *Mat3) Mul(m2 *Mat3) {
+func (m *Mat3) Mul(m2 *Mat3) *Mat3 {
 
 	//Indices:
 	// 0, 1, 2,
@@ -84,10 +86,11 @@ func (m *Mat3) Mul(m2 *Mat3) {
 		m.Data[6]*m2.Data[1] + m.Data[7]*m2.Data[4] + m.Data[8]*m2.Data[7],
 		m.Data[6]*m2.Data[2] + m.Data[7]*m2.Data[5] + m.Data[8]*m2.Data[8],
 	}
+	return m
 }
 
 //Scale m *= x (element wise multiplication)
-func (m *Mat3) Scale(x float32) {
+func (m *Mat3) Scale(x float32) *Mat3 {
 
 	m.Data[0] *= x
 	m.Data[1] *= x
@@ -100,6 +103,11 @@ func (m *Mat3) Scale(x float32) {
 	m.Data[6] *= x
 	m.Data[7] *= x
 	m.Data[8] *= x
+	return m
+}
+
+func (v *Mat3) Clone() *Mat3 {
+	return &Mat3{Data: v.Data}
 }
 
 func (m *Mat3) Eq(m2 *Mat3) bool {

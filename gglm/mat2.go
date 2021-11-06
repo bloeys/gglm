@@ -29,23 +29,25 @@ func (m *Mat2) String() string {
 }
 
 //Add m += m2
-func (m *Mat2) Add(m2 *Mat2) {
+func (m *Mat2) Add(m2 *Mat2) *Mat2 {
 	m.Data[0] += m2.Data[0]
 	m.Data[1] += m2.Data[1]
 	m.Data[2] += m2.Data[2]
 	m.Data[3] += m2.Data[3]
+	return m
 }
 
 //Add m -= m2
-func (m *Mat2) Sub(m2 *Mat2) {
+func (m *Mat2) Sub(m2 *Mat2) *Mat2 {
 	m.Data[0] -= m2.Data[0]
 	m.Data[1] -= m2.Data[1]
 	m.Data[2] -= m2.Data[2]
 	m.Data[3] -= m2.Data[3]
+	return m
 }
 
 //Mul m *= m2
-func (m *Mat2) Mul(m2 *Mat2) {
+func (m *Mat2) Mul(m2 *Mat2) *Mat2 {
 	m.Data = [4]float32{
 		m.Data[0]*m2.Data[0] + m.Data[1]*m2.Data[2],
 		m.Data[0]*m2.Data[1] + m.Data[1]*m2.Data[3],
@@ -53,14 +55,20 @@ func (m *Mat2) Mul(m2 *Mat2) {
 		m.Data[2]*m2.Data[0] + m.Data[3]*m2.Data[2],
 		m.Data[2]*m2.Data[1] + m.Data[3]*m2.Data[3],
 	}
+	return m
 }
 
 //Scale m *= x (element wise multiplication)
-func (m *Mat2) Scale(x float32) {
+func (m *Mat2) Scale(x float32) *Mat2 {
 	m.Data[0] *= x
 	m.Data[1] *= x
 	m.Data[2] *= x
 	m.Data[3] *= x
+	return m
+}
+
+func (v *Mat2) Clone() *Mat2 {
+	return &Mat2{Data: v.Data}
 }
 
 func (m *Mat2) Eq(m2 *Mat2) bool {

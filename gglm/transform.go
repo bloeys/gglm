@@ -1,6 +1,8 @@
 package gglm
 
-import "fmt"
+import (
+	"fmt"
+)
 
 var _ Mat = &TrMat{}
 var _ fmt.Stringer = &TrMat{}
@@ -90,6 +92,24 @@ func NewRotMat(q *Quat) *TrMat {
 				2*(ww+xx) - 1, 2 * (xy - zw), 2 * (yw + xz), 0,
 				2 * (zw + xy), 2*(ww+yy) - 1, 2 * (yz - xw), 0,
 				2 * (xz - yw), 2 * (xw + yz), 2*(ww+zz) - 1, 0,
+				0, 0, 0, 1,
+			},
+		},
+	}
+}
+
+func LookAt(pos, targetPos, worldUp *Vec3) *TrMat {
+
+	forward := SubVec3(targetPos, pos).Normalize()
+	right := Cross(worldUp, forward).Normalize()
+	up := Cross(forward, right)
+
+	return &TrMat{
+		Mat4: Mat4{
+			Data: [16]float32{
+				right.Data[0], right.Data[1], right.Data[2], -DotVec3(pos, right),
+				up.Data[0], up.Data[1], up.Data[2], -DotVec3(pos, up),
+				forward.Data[0], forward.Data[1], forward.Data[2], -DotVec3(pos, forward),
 				0, 0, 0, 1,
 			},
 		},

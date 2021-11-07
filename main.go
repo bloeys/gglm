@@ -164,4 +164,11 @@ func main() {
 	q1 := gglm.NewQuatEuler(gglm.NewVec3(180, 0, 0).AsRad())
 	q2 := gglm.NewQuatEuler(gglm.NewVec3(0, 180, 0).AsRad())
 	println(gglm.AngleQuat(q1, q2) * gglm.Rad2Deg)
+
+	//LookAt
+	camPos := gglm.NewVec3(0, 0, 3)
+	worldUp := gglm.NewVec3(0, 1, 0)
+	targetPos := gglm.NewVec3(0, 0, 0)
+	viewMat := gglm.LookAt(camPos, targetPos, worldUp)
+	println(viewMat.String())
 }

@@ -7,9 +7,10 @@ import (
 )
 
 var (
-	dotVec2Result float32
-	dotVec3Result float32
-	crossResult   *gglm.Vec3
+	dotVec2Result, distVec2Result  float32
+	dotVec3Result, distVec3Result  float32
+	reflectVec2Result              *gglm.Vec2
+	crossResult, reflectVec3Result *gglm.Vec3
 )
 
 func TestDotVec2(t *testing.T) {
@@ -171,5 +172,45 @@ func BenchmarkCross(b *testing.B) {
 
 	for i := 0; i < b.N; i++ {
 		crossResult = gglm.Cross(v1, v2)
+	}
+}
+
+func BenchmarkDistVec2(b *testing.B) {
+
+	v1 := &gglm.Vec2{}
+	v2 := &gglm.Vec2{}
+
+	for i := 0; i < b.N; i++ {
+		distVec2Result = gglm.DistVec2(v1, v2)
+	}
+}
+
+func BenchmarkDistVec3(b *testing.B) {
+
+	v1 := &gglm.Vec3{}
+	v2 := &gglm.Vec3{}
+
+	for i := 0; i < b.N; i++ {
+		distVec3Result = gglm.DistVec3(v1, v2)
+	}
+}
+
+func BenchmarkReflectVec2(b *testing.B) {
+
+	v1 := &gglm.Vec2{}
+	v2 := &gglm.Vec2{}
+
+	for i := 0; i < b.N; i++ {
+		reflectVec2Result = gglm.ReflectVec2(v1, v2)
+	}
+}
+
+func BenchmarkReflectVec3(b *testing.B) {
+
+	v1 := &gglm.Vec3{}
+	v2 := &gglm.Vec3{}
+
+	for i := 0; i < b.N; i++ {
+		reflectVec3Result = gglm.ReflectVec3(v1, v2)
 	}
 }

@@ -2,6 +2,7 @@ package gglm
 
 import (
 	"fmt"
+	"math"
 )
 
 var _ Mat = &TrMat{}
@@ -110,8 +111,20 @@ func LookAt(pos, targetPos, worldUp *Vec3) *TrMat {
 				{right.Data[0], up.Data[0], forward.Data[0], 0},
 				{right.Data[1], up.Data[1], forward.Data[1], 0},
 				{right.Data[2], up.Data[2], forward.Data[2], 0},
-				{-DotVec3(pos, right), -DotVec3(pos, up), -DotVec3(pos, forward), 1},
+				{-DotVec3(pos, right), -DotVec3(pos, up), DotVec3(pos, forward), 1},
 			},
+		},
+	}
+}
+
+func Perspective(fov, aspectRatio, nearClip, farClip float32) *Mat4 {
+	halfFovTan := float32(math.Tan(float64(fov * 0.5)))
+	return &Mat4{
+		Data: [4][4]float32{
+			{1 / (aspectRatio * halfFovTan), 0, 0, 0},
+			{0, 1 / halfFovTan, 0, 0},
+			{0, 0, -(nearClip + farClip) / (farClip - nearClip), -1},
+			{0, 0, -(2 * farClip * nearClip) / (farClip - nearClip), 0},
 		},
 	}
 }

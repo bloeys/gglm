@@ -6,6 +6,12 @@ import (
 	"github.com/bloeys/gglm/gglm"
 )
 
+var (
+	dotVec2Result float32
+	dotVec3Result float32
+	crossResult   *gglm.Vec3
+)
+
 func TestDotVec2(t *testing.T) {
 
 	v1 := gglm.Vec2{Data: [2]float32{1, 2}}
@@ -135,5 +141,35 @@ func TestReflectVec3(t *testing.T) {
 	res := gglm.ReflectVec3(&v1, &n)
 	if !res.Eq(&ans) {
 		t.Errorf("Got: %v; Expected: %v", res, ans)
+	}
+}
+
+func BenchmarkDotVec2(b *testing.B) {
+
+	v1 := &gglm.Vec2{}
+	v2 := &gglm.Vec2{}
+
+	for i := 0; i < b.N; i++ {
+		dotVec2Result = gglm.DotVec2(v1, v2)
+	}
+}
+
+func BenchmarkDotVec3(b *testing.B) {
+
+	v1 := &gglm.Vec3{}
+	v2 := &gglm.Vec3{}
+
+	for i := 0; i < b.N; i++ {
+		dotVec3Result = gglm.DotVec3(v1, v2)
+	}
+}
+
+func BenchmarkCross(b *testing.B) {
+
+	v1 := &gglm.Vec3{}
+	v2 := &gglm.Vec3{}
+
+	for i := 0; i < b.N; i++ {
+		crossResult = gglm.Cross(v1, v2)
 	}
 }

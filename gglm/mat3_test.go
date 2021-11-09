@@ -161,3 +161,13 @@ func TestMulMat3Vec3(t *testing.T) {
 		t.Errorf("Got: %v; Expected: %v", result.String(), correctAns.String())
 	}
 }
+
+func BenchmarkMulMat3(b *testing.B) {
+
+	m1 := gglm.NewMat3Id()
+	m2 := gglm.NewMat3Id()
+
+	for i := 0; i < b.N; i++ {
+		m1.Mul(m2)
+	}
+}

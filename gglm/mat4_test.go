@@ -6,6 +6,10 @@ import (
 	"github.com/bloeys/gglm/gglm"
 )
 
+var (
+	mulMat4Vec4Res *gglm.Vec4
+)
+
 func TestMat4GetSet(t *testing.T) {
 
 	m1 := gglm.Mat4{}
@@ -175,5 +179,25 @@ func TestMulMat4Vec4(t *testing.T) {
 
 	if !result.Eq(&correctAns) {
 		t.Errorf("Got: %v; Expected: %v", result.String(), correctAns.String())
+	}
+}
+
+func BenchmarkMulMat4(b *testing.B) {
+
+	m1 := gglm.NewMat4Id()
+	m2 := gglm.NewMat4Id()
+
+	for i := 0; i < b.N; i++ {
+		m1.Mul(m2)
+	}
+}
+
+func BenchmarkMulMat4Vec4(b *testing.B) {
+
+	m1 := gglm.NewMat4Id()
+	v1 := gglm.Vec4{}
+
+	for i := 0; i < b.N; i++ {
+		mulMat4Vec4Res = gglm.MulMat4Vec4(m1, &v1)
 	}
 }

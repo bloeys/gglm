@@ -117,6 +117,7 @@ func LookAt(pos, targetPos, worldUp *Vec3) *TrMat {
 	}
 }
 
+//Perspective creates a perspective projection matrix
 func Perspective(fov, aspectRatio, nearClip, farClip float32) *Mat4 {
 	halfFovTan := float32(math.Tan(float64(fov * 0.5)))
 	return &Mat4{
@@ -125,6 +126,20 @@ func Perspective(fov, aspectRatio, nearClip, farClip float32) *Mat4 {
 			{0, 1 / halfFovTan, 0, 0},
 			{0, 0, -(nearClip + farClip) / (farClip - nearClip), -1},
 			{0, 0, -(2 * farClip * nearClip) / (farClip - nearClip), 0},
+		},
+	}
+}
+
+//Perspective creates an orthographic projection matrix
+func Ortho(left, right, top, bottom, nearClip, farClip float32) *TrMat {
+	return &TrMat{
+		Mat4: Mat4{
+			Data: [4][4]float32{
+				{2 / (right - left), 0, 0, 0},
+				{0, 2 / (top - bottom), 0, 0},
+				{0, 0, -2 / (farClip - nearClip), 0},
+				{-(right + left) / (right - left), -(top + bottom) / (top - bottom), -(farClip + nearClip) / (farClip - nearClip), 1},
+			},
 		},
 	}
 }

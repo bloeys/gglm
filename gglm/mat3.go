@@ -73,21 +73,33 @@ func (m *Mat3) Mul(m2 *Mat3) *Mat3 {
 	// 01, 11, 21,
 	// 02, 12, 22,
 
+	m00 := m.Data[0][0]
+	m01 := m.Data[0][1]
+	m02 := m.Data[0][2]
+
+	m10 := m.Data[1][0]
+	m11 := m.Data[1][1]
+	m12 := m.Data[1][2]
+
+	m20 := m.Data[2][0]
+	m21 := m.Data[2][1]
+	m22 := m.Data[2][2]
+
 	m.Data = [3][3]float32{
 		{
-			m.Data[0][0]*m2.Data[0][0] + m.Data[1][0]*m2.Data[0][1] + m.Data[2][0]*m2.Data[0][2],
-			m.Data[0][1]*m2.Data[0][0] + m.Data[1][1]*m2.Data[0][1] + m.Data[2][1]*m2.Data[0][2],
-			m.Data[0][2]*m2.Data[0][0] + m.Data[1][2]*m2.Data[0][1] + m.Data[2][2]*m2.Data[0][2],
+			m00*m2.Data[0][0] + m10*m2.Data[0][1] + m20*m2.Data[0][2],
+			m01*m2.Data[0][0] + m11*m2.Data[0][1] + m21*m2.Data[0][2],
+			m02*m2.Data[0][0] + m12*m2.Data[0][1] + m22*m2.Data[0][2],
 		},
 		{
-			m.Data[0][0]*m2.Data[1][0] + m.Data[1][0]*m2.Data[1][1] + m.Data[2][0]*m2.Data[1][2],
-			m.Data[0][1]*m2.Data[1][0] + m.Data[1][1]*m2.Data[1][1] + m.Data[2][1]*m2.Data[1][2],
-			m.Data[0][2]*m2.Data[1][0] + m.Data[1][2]*m2.Data[1][1] + m.Data[2][2]*m2.Data[1][2],
+			m00*m2.Data[1][0] + m10*m2.Data[1][1] + m20*m2.Data[1][2],
+			m01*m2.Data[1][0] + m11*m2.Data[1][1] + m21*m2.Data[1][2],
+			m02*m2.Data[1][0] + m12*m2.Data[1][1] + m22*m2.Data[1][2],
 		},
 		{
-			m.Data[0][0]*m2.Data[2][0] + m.Data[1][0]*m2.Data[2][1] + m.Data[2][0]*m2.Data[2][2],
-			m.Data[0][1]*m2.Data[2][0] + m.Data[1][1]*m2.Data[2][1] + m.Data[2][1]*m2.Data[2][2],
-			m.Data[0][2]*m2.Data[2][0] + m.Data[1][2]*m2.Data[2][1] + m.Data[2][2]*m2.Data[2][2],
+			m00*m2.Data[2][0] + m10*m2.Data[2][1] + m20*m2.Data[2][2],
+			m01*m2.Data[2][0] + m11*m2.Data[2][1] + m21*m2.Data[2][2],
+			m02*m2.Data[2][0] + m12*m2.Data[2][1] + m22*m2.Data[2][2],
 		},
 	}
 	return m
@@ -166,22 +178,35 @@ func SubMat3(m1, m2 *Mat3) *Mat3 {
 
 //MulMat3 m3 = m1 * m2
 func MulMat3(m1, m2 *Mat3) *Mat3 {
+
+	m00 := m1.Data[0][0]
+	m01 := m1.Data[0][1]
+	m02 := m1.Data[0][2]
+
+	m10 := m1.Data[1][0]
+	m11 := m1.Data[1][1]
+	m12 := m1.Data[1][2]
+
+	m20 := m1.Data[2][0]
+	m21 := m1.Data[2][1]
+	m22 := m1.Data[2][2]
+
 	return &Mat3{
 		Data: [3][3]float32{
 			{
-				m1.Data[0][0]*m2.Data[0][0] + m1.Data[1][0]*m2.Data[0][1] + m1.Data[2][0]*m2.Data[0][2],
-				m1.Data[0][1]*m2.Data[0][0] + m1.Data[1][1]*m2.Data[0][1] + m1.Data[2][1]*m2.Data[0][2],
-				m1.Data[0][2]*m2.Data[0][0] + m1.Data[1][2]*m2.Data[0][1] + m1.Data[2][2]*m2.Data[0][2],
+				m00*m2.Data[0][0] + m10*m2.Data[0][1] + m20*m2.Data[0][2],
+				m01*m2.Data[0][0] + m11*m2.Data[0][1] + m21*m2.Data[0][2],
+				m02*m2.Data[0][0] + m12*m2.Data[0][1] + m22*m2.Data[0][2],
 			},
 			{
-				m1.Data[0][0]*m2.Data[1][0] + m1.Data[1][0]*m2.Data[1][1] + m1.Data[2][0]*m2.Data[1][2],
-				m1.Data[0][1]*m2.Data[1][0] + m1.Data[1][1]*m2.Data[1][1] + m1.Data[2][1]*m2.Data[1][2],
-				m1.Data[0][2]*m2.Data[1][0] + m1.Data[1][2]*m2.Data[1][1] + m1.Data[2][2]*m2.Data[1][2],
+				m00*m2.Data[1][0] + m10*m2.Data[1][1] + m20*m2.Data[1][2],
+				m01*m2.Data[1][0] + m11*m2.Data[1][1] + m21*m2.Data[1][2],
+				m02*m2.Data[1][0] + m12*m2.Data[1][1] + m22*m2.Data[1][2],
 			},
 			{
-				m1.Data[0][0]*m2.Data[2][0] + m1.Data[1][0]*m2.Data[2][1] + m1.Data[2][0]*m2.Data[2][2],
-				m1.Data[0][1]*m2.Data[2][0] + m1.Data[1][1]*m2.Data[2][1] + m1.Data[2][1]*m2.Data[2][2],
-				m1.Data[0][2]*m2.Data[2][0] + m1.Data[1][2]*m2.Data[2][1] + m1.Data[2][2]*m2.Data[2][2],
+				m00*m2.Data[2][0] + m10*m2.Data[2][1] + m20*m2.Data[2][2],
+				m01*m2.Data[2][0] + m11*m2.Data[2][1] + m21*m2.Data[2][2],
+				m02*m2.Data[2][0] + m12*m2.Data[2][1] + m22*m2.Data[2][2],
 			},
 		},
 	}

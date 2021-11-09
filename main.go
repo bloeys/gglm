@@ -1,23 +1,27 @@
 package main
 
-import "github.com/bloeys/gglm/gglm"
+import (
+	"fmt"
+
+	"github.com/bloeys/gglm/gglm"
+)
 
 func main() {
 
 	//Mat3
 	m1 := &gglm.Mat3{
-		Data: [9]float32{
-			1, 2, 3,
-			4, 5, 6,
-			7, 8, 9,
+		Data: [3][3]float32{
+			{1, 4, 7},
+			{2, 5, 8},
+			{3, 6, 9},
 		},
 	}
 
 	m2 := &gglm.Mat3{
-		Data: [9]float32{
-			1, 2, 3,
-			1, 2, 3,
-			1, 2, 3,
+		Data: [3][3]float32{
+			{1, 1, 1},
+			{2, 2, 2},
+			{3, 3, 3},
 		},
 	}
 
@@ -28,20 +32,20 @@ func main() {
 
 	//Mat4
 	m4 := &gglm.Mat4{
-		Data: [16]float32{
-			1, 2, 3, 4,
-			5, 6, 7, 8,
-			9, 10, 11, 12,
-			13, 14, 15, 16,
+		Data: [4][4]float32{
+			{1, 5, 9, 13},
+			{2, 6, 10, 14},
+			{3, 7, 11, 15},
+			{4, 8, 12, 16},
 		},
 	}
 
 	m5 := &gglm.Mat4{
-		Data: [16]float32{
-			1, 2, 3, 4,
-			1, 2, 3, 4,
-			1, 2, 3, 4,
-			1, 2, 3, 4,
+		Data: [4][4]float32{
+			{1, 2, 3, 4},
+			{1, 2, 3, 4},
+			{1, 2, 3, 4},
+			{1, 2, 3, 4},
 		},
 	}
 
@@ -99,9 +103,9 @@ func main() {
 
 	//Mat2Vec2
 	mat2A := gglm.Mat2{
-		Data: [4]float32{
-			1, 2,
-			3, 4,
+		Data: [2][2]float32{
+			{1, 3},
+			{2, 4},
 		},
 	}
 
@@ -110,10 +114,10 @@ func main() {
 
 	//Mat3Vec3
 	mat3A := gglm.Mat3{
-		Data: [9]float32{
-			1, 2, 3,
-			4, 5, 6,
-			7, 8, 9,
+		Data: [3][3]float32{
+			{1, 4, 7},
+			{2, 5, 8},
+			{3, 6, 9},
 		},
 	}
 
@@ -171,4 +175,23 @@ func main() {
 	targetPos := gglm.NewVec3(0, 0, 0)
 	viewMat := gglm.LookAt(camPos, targetPos, worldUp)
 	println(viewMat.String())
+
+	//Mat2Col
+	mc := gglm.NewMat2Id()
+	println("===============================")
+	println(mc.String())
+
+	mc.Data = [2][2]float32{
+		{1, 3},
+		{2, 4},
+	}
+	println(mc.String())
+	fmt.Printf("Arr: %v", mc.Data)
+
+	mc2 := gglm.Mat2{Data: [2][2]float32{
+		{1, 3},
+		{2, 4},
+	}}
+
+	println(mc2.Mul(mc).String())
 }

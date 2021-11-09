@@ -11,11 +11,11 @@ func TestNewTrMatId(t *testing.T) {
 	m := gglm.NewTrMatId()
 	ans := &gglm.TrMat{
 		Mat4: gglm.Mat4{
-			Data: [16]float32{
-				1, 0, 0, 0,
-				0, 1, 0, 0,
-				0, 0, 1, 0,
-				0, 0, 0, 1,
+			Data: [4][4]float32{
+				{1, 0, 0, 0},
+				{0, 1, 0, 0},
+				{0, 0, 1, 0},
+				{0, 0, 0, 1},
 			},
 		},
 	}
@@ -30,11 +30,11 @@ func TestNewTranslationMat(t *testing.T) {
 	m := gglm.NewTranslationMat(gglm.NewVec3(1, 2, 3))
 	ans := &gglm.TrMat{
 		Mat4: gglm.Mat4{
-			Data: [16]float32{
-				1, 0, 0, 1,
-				0, 1, 0, 2,
-				0, 0, 1, 3,
-				0, 0, 0, 1,
+			Data: [4][4]float32{
+				{1, 0, 0, 0},
+				{0, 1, 0, 0},
+				{0, 0, 1, 0},
+				{1, 2, 3, 1},
 			},
 		},
 	}
@@ -49,11 +49,11 @@ func TestNewScaleMat(t *testing.T) {
 	m := gglm.NewScaleMat(gglm.NewVec3(1, 2, 3))
 	ans := &gglm.TrMat{
 		Mat4: gglm.Mat4{
-			Data: [16]float32{
-				1, 0, 0, 0,
-				0, 2, 0, 0,
-				0, 0, 3, 0,
-				0, 0, 0, 1,
+			Data: [4][4]float32{
+				{1, 0, 0, 0},
+				{0, 2, 0, 0},
+				{0, 0, 3, 0},
+				{0, 0, 0, 1},
 			},
 		},
 	}
@@ -68,11 +68,11 @@ func TestNewRotMat(t *testing.T) {
 	m := gglm.NewRotMat(gglm.NewQuatId())
 	ans := &gglm.TrMat{
 		Mat4: gglm.Mat4{
-			Data: [16]float32{
-				1, 0, 0, 0,
-				0, 1, 0, 0,
-				0, 0, 1, 0,
-				0, 0, 0, 1,
+			Data: [4][4]float32{
+				{1, 0, 0, 0},
+				{0, 1, 0, 0},
+				{0, 0, 1, 0},
+				{0, 0, 0, 1},
 			},
 		},
 	}

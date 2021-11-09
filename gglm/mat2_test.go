@@ -25,9 +25,9 @@ func TestMat2GetSet(t *testing.T) {
 func TestMat2Id(t *testing.T) {
 
 	correctAns := gglm.Mat2{
-		Data: [4]float32{
-			1, 0,
-			0, 1,
+		Data: [2][2]float32{
+			{1, 0},
+			{0, 1},
 		}}
 
 	m1 := gglm.NewMat2Id()
@@ -39,20 +39,20 @@ func TestMat2Id(t *testing.T) {
 func TestSubMat2(t *testing.T) {
 
 	correctAns := gglm.Mat2{
-		Data: [4]float32{
-			-4, -4,
-			-4, -4,
+		Data: [2][2]float32{
+			{-4, -4},
+			{-4, -4},
 		}}
 
 	m1 := &gglm.Mat2{
-		Data: [4]float32{
-			1, 2,
-			3, 4,
+		Data: [2][2]float32{
+			{1, 3},
+			{2, 4},
 		}}
 	m2 := &gglm.Mat2{
-		Data: [4]float32{
-			5, 6,
-			7, 8,
+		Data: [2][2]float32{
+			{5, 7},
+			{6, 8},
 		}}
 
 	result := gglm.SubMat2(m1, m2)
@@ -70,20 +70,20 @@ func TestSubMat2(t *testing.T) {
 func TestAddMat2(t *testing.T) {
 
 	correctAns := gglm.Mat2{
-		Data: [4]float32{
-			6, 8,
-			10, 12,
+		Data: [2][2]float32{
+			{6, 10},
+			{8, 12},
 		}}
 
 	m1 := &gglm.Mat2{
-		Data: [4]float32{
-			1, 2,
-			3, 4,
+		Data: [2][2]float32{
+			{1, 3},
+			{2, 4},
 		}}
 	m2 := &gglm.Mat2{
-		Data: [4]float32{
-			5, 6,
-			7, 8,
+		Data: [2][2]float32{
+			{5, 7},
+			{6, 8},
 		}}
 
 	result := gglm.AddMat2(m1, m2)
@@ -101,20 +101,20 @@ func TestAddMat2(t *testing.T) {
 func TestMulMat2(t *testing.T) {
 
 	correctAns := gglm.Mat2{
-		Data: [4]float32{
-			19, 22,
-			43, 50,
+		Data: [2][2]float32{
+			{19, 43},
+			{22, 50},
 		}}
 
 	m1 := &gglm.Mat2{
-		Data: [4]float32{
-			1, 2,
-			3, 4,
+		Data: [2][2]float32{
+			{1, 3},
+			{2, 4},
 		}}
 	m2 := &gglm.Mat2{
-		Data: [4]float32{
-			5, 6,
-			7, 8,
+		Data: [2][2]float32{
+			{5, 7},
+			{6, 8},
 		}}
 
 	result := gglm.MulMat2(m1, m2)
@@ -134,9 +134,9 @@ func TestMulMat2Vec2(t *testing.T) {
 	correctAns := gglm.Vec2{Data: [2]float32{5, 11}}
 
 	m := &gglm.Mat2{
-		Data: [4]float32{
-			1, 2,
-			3, 4,
+		Data: [2][2]float32{
+			{1, 3},
+			{2, 4},
 		}}
 	v := &gglm.Vec2{Data: [2]float32{1, 2}}
 

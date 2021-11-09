@@ -14,16 +14,16 @@ type TrMat struct {
 
 //Translate adds the vector to the translation components of the transformation matrix
 func (t *TrMat) Translate(v *Vec3) {
-	t.Data[3] += v.Data[0]
-	t.Data[7] += v.Data[1]
-	t.Data[11] += v.Data[2]
+	t.Data[3][0] += v.Data[0]
+	t.Data[3][1] += v.Data[1]
+	t.Data[3][2] += v.Data[2]
 }
 
 //Scale multiplies the vector by the scale components of the transformation matrix
 func (t *TrMat) Scale(v *Vec3) {
-	t.Data[0] *= v.Data[0]
-	t.Data[5] *= v.Data[1]
-	t.Data[10] *= v.Data[2]
+	t.Data[0][0] *= v.Data[0]
+	t.Data[1][1] *= v.Data[1]
+	t.Data[2][2] *= v.Data[2]
 }
 
 func (t *TrMat) Mul(m *TrMat) *TrMat {
@@ -44,11 +44,11 @@ func (t *TrMat) Clone() *TrMat {
 func NewTranslationMat(v *Vec3) *TrMat {
 	return &TrMat{
 		Mat4: Mat4{
-			Data: [16]float32{
-				1, 0, 0, v.Data[0],
-				0, 1, 0, v.Data[1],
-				0, 0, 1, v.Data[2],
-				0, 0, 0, 1,
+			Data: [4][4]float32{
+				{1, 0, 0, 0},
+				{0, 1, 0, 0},
+				{0, 0, 1, 0},
+				{v.Data[0], v.Data[1], v.Data[2], 1},
 			},
 		},
 	}
@@ -57,11 +57,11 @@ func NewTranslationMat(v *Vec3) *TrMat {
 func NewScaleMat(v *Vec3) *TrMat {
 	return &TrMat{
 		Mat4: Mat4{
-			Data: [16]float32{
-				v.Data[0], 0, 0, 0,
-				0, v.Data[1], 0, 0,
-				0, 0, v.Data[2], 0,
-				0, 0, 0, 1,
+			Data: [4][4]float32{
+				{v.Data[0], 0, 0, 0},
+				{0, v.Data[1], 0, 0},
+				{0, 0, v.Data[2], 0},
+				{0, 0, 0, 1},
 			},
 		},
 	}
@@ -88,11 +88,11 @@ func NewRotMat(q *Quat) *TrMat {
 
 	return &TrMat{
 		Mat4: Mat4{
-			Data: [16]float32{
-				2*(ww+xx) - 1, 2 * (xy - zw), 2 * (yw + xz), 0,
-				2 * (zw + xy), 2*(ww+yy) - 1, 2 * (yz - xw), 0,
-				2 * (xz - yw), 2 * (xw + yz), 2*(ww+zz) - 1, 0,
-				0, 0, 0, 1,
+			Data: [4][4]float32{
+				{2*(ww+xx) - 1, 2 * (zw + xy), 2 * (xz - yw), 0},
+				{2 * (xy - zw), 2*(ww+yy) - 1, 2 * (xw + yz), 0},
+				{2 * (yw + xz), 2 * (yz - xw), 2*(ww+zz) - 1, 0},
+				{0, 0, 0, 1},
 			},
 		},
 	}
@@ -106,11 +106,11 @@ func LookAt(pos, targetPos, worldUp *Vec3) *TrMat {
 
 	return &TrMat{
 		Mat4: Mat4{
-			Data: [16]float32{
-				right.Data[0], right.Data[1], right.Data[2], -DotVec3(pos, right),
-				up.Data[0], up.Data[1], up.Data[2], -DotVec3(pos, up),
-				forward.Data[0], forward.Data[1], forward.Data[2], -DotVec3(pos, forward),
-				0, 0, 0, 1,
+			Data: [4][4]float32{
+				{right.Data[0], up.Data[0], forward.Data[0], 0},
+				{right.Data[1], up.Data[1], forward.Data[1], 0},
+				{right.Data[2], up.Data[2], forward.Data[2], 0},
+				{-DotVec3(pos, right), -DotVec3(pos, up), -DotVec3(pos, forward), 1},
 			},
 		},
 	}

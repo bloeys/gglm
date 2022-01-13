@@ -1,6 +1,6 @@
 # gglm
 
-Fast Go OpenGL Mathematics library inspired by the c++ library [glm](https://github.com/g-truc/glm).
+Fast Go OpenGL/Graphics focused Mathematics library inspired by the c++ library [glm](https://github.com/g-truc/glm).
 
 ## Notes
 

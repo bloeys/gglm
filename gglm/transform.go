@@ -14,21 +14,23 @@ type TrMat struct {
 }
 
 //Translate adds v to the translation components of the transformation matrix
-func (t *TrMat) Translate(v *Vec3) {
+func (t *TrMat) Translate(v *Vec3) *TrMat {
 	t.Data[3][0] += v.Data[0]
 	t.Data[3][1] += v.Data[1]
 	t.Data[3][2] += v.Data[2]
+	return t
 }
 
 //Scale multiplies the scale components of the transformation matrix by v
-func (t *TrMat) Scale(v *Vec3) {
+func (t *TrMat) Scale(v *Vec3) *TrMat {
 	t.Data[0][0] *= v.Data[0]
 	t.Data[1][1] *= v.Data[1]
 	t.Data[2][2] *= v.Data[2]
+	return t
 }
 
 //Rotate takes a *normalized* axis and angles in radians to rotate around the given axis
-func (t *TrMat) Rotate(rads float32, axis *Vec3) {
+func (t *TrMat) Rotate(rads float32, axis *Vec3) *TrMat {
 
 	s := Sin32(rads)
 	c := Cos32(rads)
@@ -68,6 +70,7 @@ func (t *TrMat) Rotate(rads float32, axis *Vec3) {
 	t.Data[0] = result.Data[0]
 	t.Data[1] = result.Data[1]
 	t.Data[2] = result.Data[2]
+	return t
 }
 
 func (t *TrMat) Mul(m *TrMat) *TrMat {

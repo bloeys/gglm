@@ -2,9 +2,6 @@ package gglm
 
 import "math"
 
-//F32Epsilon = 0.0000005
-const F32Epsilon float32 = 1e-6
-
 //EqF32 true if abs(f1-f2) <= F32Epsilon
 func EqF32(f1, f2 float32) bool {
 	return math.Abs(float64(f1-f2)) <= float64(F32Epsilon)
@@ -29,6 +26,18 @@ func Cos32(x float32) float32 {
 
 func Acos32(x float32) float32 {
 	return float32(math.Acos(float64(x)))
+}
+
+func Tan32(x float32) float32 {
+	return float32(math.Tan(float64(x)))
+}
+
+func Atan32(x float32) float32 {
+	return float32(math.Atan(float64(x)))
+}
+
+func Atan232(x, y float32) float32 {
+	return float32(math.Atan2(float64(y), float64(x)))
 }
 
 func Sincos32(x float32) (sinx, cosx float32) {

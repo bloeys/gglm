@@ -13,18 +13,60 @@ type TrMat struct {
 	Mat4
 }
 
-//Translate adds the vector to the translation components of the transformation matrix
+//Translate adds v to the translation components of the transformation matrix
 func (t *TrMat) Translate(v *Vec3) {
 	t.Data[3][0] += v.Data[0]
 	t.Data[3][1] += v.Data[1]
 	t.Data[3][2] += v.Data[2]
 }
 
-//Scale multiplies the vector by the scale components of the transformation matrix
+//Scale multiplies the scale components of the transformation matrix by v
 func (t *TrMat) Scale(v *Vec3) {
 	t.Data[0][0] *= v.Data[0]
 	t.Data[1][1] *= v.Data[1]
 	t.Data[2][2] *= v.Data[2]
+}
+
+func (t *TrMat) Rotate(rads float32, axis *Vec3) {
+
+	s := Sin32(rads)
+	c := Cos32(rads)
+
+	axis = axis.Normalize()
+	temp := axis.Clone().Scale(1 - c)
+
+	rotate := TrMat{}
+	rotate.Data[0][0] = c + temp.Data[0]*axis.Data[0]
+	rotate.Data[0][1] = temp.Data[0]*axis.Data[1] + s*axis.Data[2]
+	rotate.Data[0][2] = temp.Data[0]*axis.Data[2] - s*axis.Data[1]
+
+	rotate.Data[1][0] = temp.Data[1]*axis.Data[0] - s*axis.Data[2]
+	rotate.Data[1][1] = c + temp.Data[1]*axis.Data[1]
+	rotate.Data[1][2] = temp.Data[1]*axis.Data[2] + s*axis.Data[0]
+
+	rotate.Data[2][0] = temp.Data[2]*axis.Data[0] + s*axis.Data[1]
+	rotate.Data[2][1] = temp.Data[2]*axis.Data[1] - s*axis.Data[0]
+	rotate.Data[2][2] = c + temp.Data[2]*axis.Data[2]
+
+	result := &Mat4{}
+	result.Data[0] = t.Col(0).Scale(rotate.Data[0][0]).
+		Add(t.Col(1).Scale(rotate.Data[0][1])).
+		Add(t.Col(2).Scale(rotate.Data[0][2])).
+		Data
+
+	result.Data[1] = t.Col(0).Scale(rotate.Data[1][0]).
+		Add(t.Col(1).Scale(rotate.Data[1][1])).
+		Add(t.Col(2).Scale(rotate.Data[1][2])).
+		Data
+
+	result.Data[2] = t.Col(0).Scale(rotate.Data[2][0]).
+		Add(t.Col(1).Scale(rotate.Data[2][1])).
+		Add(t.Col(2).Scale(rotate.Data[2][2])).
+		Data
+
+	t.Data[0] = result.Data[0]
+	t.Data[1] = result.Data[1]
+	t.Data[2] = result.Data[2]
 }
 
 func (t *TrMat) Mul(m *TrMat) *TrMat {

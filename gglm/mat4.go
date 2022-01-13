@@ -32,6 +32,10 @@ func (m *Mat4) String() string {
 	)
 }
 
+func (m *Mat4) Col(c int) *Vec4 {
+	return &Vec4{Data: m.Data[c]}
+}
+
 //Add m += m2
 func (m *Mat4) Add(m2 *Mat4) *Mat4 {
 

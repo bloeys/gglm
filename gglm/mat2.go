@@ -28,6 +28,10 @@ func (m *Mat2) String() string {
 	return fmt.Sprintf("\n| %+-9.3f %+-9.3f |\n| %+-9.3f %+-9.3f |\n", m.Data[0][0], m.Data[0][1], m.Data[1][0], m.Data[1][1])
 }
 
+func (m *Mat2) Col(c int) *Vec2 {
+	return &Vec2{Data: m.Data[c]}
+}
+
 //Add m += m2
 func (m *Mat2) Add(m2 *Mat2) *Mat2 {
 	m.Data[0][0] += m2.Data[0][0]

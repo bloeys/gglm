@@ -27,6 +27,7 @@ func (t *TrMat) Scale(v *Vec3) {
 	t.Data[2][2] *= v.Data[2]
 }
 
+//Rotate takes a *normalized* axis and angles in radians to rotate around the given axis
 func (t *TrMat) Rotate(rads float32, axis *Vec3) {
 
 	s := Sin32(rads)

@@ -16,6 +16,37 @@ func (q *Quat) Eq(q2 *Quat) bool {
 	return q.Data == q2.Data
 }
 
+//Angle returns the angle represented by this quaternion
+func (q *Quat) Angle() float32 {
+
+	if Abs32(q.Data[3]) > CosHalf {
+
+		a := Asin32(Sqrt32(q.Data[0]*q.Data[0]+q.Data[1]*q.Data[1]+q.Data[2]*q.Data[2])) * 2
+		if q.Data[3] < 0 {
+			return Pi*2 - a
+		}
+		return a
+	}
+
+	return Acos32(q.Data[3]) * 2
+}
+
+//Axis returns the rotation axis represented by this quaternion
+func (q *Quat) Axis() *Vec3 {
+
+	var t float32 = 1 - q.Data[3]*q.Data[3]
+	if t <= 0 {
+		return &Vec3{Data: [3]float32{0, 0, 1}}
+	}
+
+	t = 1 / Sqrt32(t)
+	return &Vec3{Data: [3]float32{
+		q.Data[0] * t,
+		q.Data[1] * t,
+		q.Data[2] * t,
+	}}
+}
+
 //Euler takes rotations in radians and produces a rotation that
 //rotates around the z-axis, y-axis and lastly x-axis.
 func NewQuatEuler(v *Vec3) *Quat {

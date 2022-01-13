@@ -35,3 +35,11 @@ func Sincos32(x float32) (sinx, cosx float32) {
 	a, b := math.Sincos(float64(x))
 	return float32(a), float32(b)
 }
+
+func Abs32(x float32) float32 {
+	return float32(math.Abs(float64(x)))
+}
+
+func Sqrt32(x float32) float32 {
+	return float32(math.Sqrt(float64(x)))
+}

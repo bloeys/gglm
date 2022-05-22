@@ -230,9 +230,9 @@ func TestVecSwizzleSet(t *testing.T) {
 func TestVecSwizzleAdd(t *testing.T) {
 
 	//Vec2
-	v2 := gglm.NewVec2(0, 0)
-	var ans2X float32 = 1
-	var ans2Y float32 = 2
+	v2 := gglm.NewVec2(1, 1)
+	var ans2X float32 = 2
+	var ans2Y float32 = 3
 	v2.AddX(1)
 	v2.AddY(2)
 	if v2.X() != ans2X {
@@ -243,7 +243,7 @@ func TestVecSwizzleAdd(t *testing.T) {
 		t.Errorf("Got: %v; Expected: %v", v2.Y(), ans2Y)
 	}
 
-	v2 = gglm.NewVec2(0, 0)
+	v2 = gglm.NewVec2(1, 1)
 	v2.AddR(1)
 	v2.AddG(2)
 	if v2.X() != ans2X {
@@ -254,7 +254,7 @@ func TestVecSwizzleAdd(t *testing.T) {
 		t.Errorf("Got: %v; Expected: %v", v2.Y(), ans2Y)
 	}
 
-	v2 = gglm.NewVec2(0, 0)
+	v2 = gglm.NewVec2(1, 1)
 	v2.AddXY(1, 2)
 	if v2.X() != ans2X {
 		t.Errorf("Got: %v; Expected: %v", v2.X(), ans2X)
@@ -264,7 +264,7 @@ func TestVecSwizzleAdd(t *testing.T) {
 		t.Errorf("Got: %v; Expected: %v", v2.Y(), ans2Y)
 	}
 
-	v2 = gglm.NewVec2(0, 0)
+	v2 = gglm.NewVec2(1, 1)
 	v2.AddRG(1, 2)
 	if v2.X() != ans2X {
 		t.Errorf("Got: %v; Expected: %v", v2.X(), ans2X)
@@ -275,10 +275,10 @@ func TestVecSwizzleAdd(t *testing.T) {
 	}
 
 	//Vec3
-	v3 := gglm.NewVec3(0, 0, 0)
-	var ans3X float32 = 1
-	var ans3Y float32 = 2
-	var ans3Z float32 = 3
+	v3 := gglm.NewVec3(1, 1, 1)
+	var ans3X float32 = 2
+	var ans3Y float32 = 3
+	var ans3Z float32 = 4
 	v3.AddX(1)
 	v3.AddY(2)
 	v3.AddZ(3)
@@ -294,7 +294,7 @@ func TestVecSwizzleAdd(t *testing.T) {
 		t.Errorf("Got: %v; Expected: %v", v3.Z(), ans3Z)
 	}
 
-	v3 = gglm.NewVec3(0, 0, 0)
+	v3 = gglm.NewVec3(1, 1, 1)
 	v3.AddR(1)
 	v3.AddG(2)
 	v3.AddB(3)
@@ -310,7 +310,7 @@ func TestVecSwizzleAdd(t *testing.T) {
 		t.Errorf("Got: %v; Expected: %v", v3.Z(), ans3Z)
 	}
 
-	v3 = gglm.NewVec3(0, 0, 0)
+	v3 = gglm.NewVec3(1, 1, 1)
 	v3.AddXY(1, 2)
 	if v3.X() != ans3X {
 		t.Errorf("Got: %v; Expected: %v", v3.X(), ans3X)
@@ -320,7 +320,7 @@ func TestVecSwizzleAdd(t *testing.T) {
 		t.Errorf("Got: %v; Expected: %v", v3.Y(), ans3Y)
 	}
 
-	v3 = gglm.NewVec3(0, 0, 0)
+	v3 = gglm.NewVec3(1, 1, 1)
 	v3.AddRG(1, 2)
 	if v3.X() != ans3X {
 		t.Errorf("Got: %v; Expected: %v", v3.X(), ans3X)
@@ -330,7 +330,7 @@ func TestVecSwizzleAdd(t *testing.T) {
 		t.Errorf("Got: %v; Expected: %v", v3.Y(), ans3Y)
 	}
 
-	v3 = gglm.NewVec3(0, 0, 0)
+	v3 = gglm.NewVec3(1, 1, 1)
 	v3.AddXYZ(1, 2, 3)
 	if v3.X() != ans3X {
 		t.Errorf("Got: %v; Expected: %v", v3.X(), ans3X)
@@ -344,7 +344,7 @@ func TestVecSwizzleAdd(t *testing.T) {
 		t.Errorf("Got: %v; Expected: %v", v3.Z(), ans3Z)
 	}
 
-	v3 = gglm.NewVec3(0, 0, 0)
+	v3 = gglm.NewVec3(1, 1, 1)
 	v3.AddRGB(1, 2, 3)
 	if v3.X() != ans3X {
 		t.Errorf("Got: %v; Expected: %v", v3.X(), ans3X)

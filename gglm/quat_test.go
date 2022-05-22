@@ -14,6 +14,12 @@ func TestNewQuatEuler(t *testing.T) {
 	if !gglm.EqF32(q.X(), ans.X()) || !gglm.EqF32(q.Y(), ans.Y()) || !gglm.EqF32(q.Z(), ans.Z()) || !gglm.EqF32(q.W(), ans.W()) {
 		t.Errorf("Got: %v; Expected: %v", q.String(), ans.String())
 	}
+
+	q = gglm.NewQuatEulerXYZ(180*gglm.Deg2Rad, 180*gglm.Deg2Rad, 180*gglm.Deg2Rad)
+
+	if !gglm.EqF32(q.X(), ans.X()) || !gglm.EqF32(q.Y(), ans.Y()) || !gglm.EqF32(q.Z(), ans.Z()) || !gglm.EqF32(q.W(), ans.W()) {
+		t.Errorf("Got: %v; Expected: %v", q.String(), ans.String())
+	}
 }
 
 func TestNewQuatAngleAxis(t *testing.T) {

@@ -6,6 +6,9 @@ type Swizzle1 interface {
 
 	SetX(float32)
 	SetR(float32)
+
+	AddX(float32)
+	AddR(float32)
 }
 
 type Swizzle2 interface {
@@ -15,6 +18,12 @@ type Swizzle2 interface {
 
 	SetY(float32)
 	SetG(float32)
+
+	AddY(float32)
+	AddG(float32)
+
+	AddXY(float32, float32)
+	AddRG(float32, float32)
 }
 
 type Swizzle3 interface {
@@ -24,6 +33,12 @@ type Swizzle3 interface {
 
 	SetZ(float32)
 	SetB(float32)
+
+	AddZ(float32)
+	AddB(float32)
+
+	AddXYZ(float32, float32, float32)
+	AddRGB(float32, float32, float32)
 }
 
 type Swizzle4 interface {
@@ -33,4 +48,10 @@ type Swizzle4 interface {
 
 	SetW(float32)
 	SetA(float32)
+
+	AddW(float32)
+	AddA(float32)
+
+	AddXYZW(float32, float32, float32, float32)
+	AddRGBA(float32, float32, float32, float32)
 }

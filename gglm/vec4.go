@@ -76,6 +76,74 @@ func (v *Vec4) SetA(f float32) {
 	v.Data[3] = f
 }
 
+func (v *Vec4) AddX(x float32) {
+	v.Data[0] += x
+}
+
+func (v *Vec4) AddY(y float32) {
+	v.Data[1] += y
+}
+
+func (v *Vec4) AddZ(z float32) {
+	v.Data[2] += z
+}
+
+func (v *Vec4) AddW(w float32) {
+	v.Data[3] += w
+}
+
+func (v *Vec4) AddR(r float32) {
+	v.Data[0] += r
+}
+
+func (v *Vec4) AddG(g float32) {
+	v.Data[1] += g
+}
+
+func (v *Vec4) AddB(b float32) {
+	v.Data[2] += b
+}
+
+func (v *Vec4) AddA(a float32) {
+	v.Data[3] += a
+}
+
+func (v *Vec4) AddXY(x, y float32) {
+	v.Data[0] += x
+	v.Data[1] += y
+}
+
+func (v *Vec4) AddRG(r, g float32) {
+	v.Data[0] += r
+	v.Data[1] += g
+}
+
+func (v *Vec4) AddXYZ(x, y, z float32) {
+	v.Data[0] += x
+	v.Data[1] += y
+	v.Data[2] += z
+}
+
+func (v *Vec4) AddRGB(r, g, b float32) {
+	v.Data[0] += r
+	v.Data[1] += g
+	v.Data[2] += b
+}
+
+func (v *Vec4) AddXYZW(x, y, z, w float32) {
+	v.Data[0] += x
+	v.Data[1] += y
+	v.Data[2] += z
+	v.Data[3] += w
+}
+
+func (v *Vec4) AddRGBA(r, g, b, a float32) {
+	v.Data[0] += r
+	v.Data[1] += g
+	v.Data[2] += b
+	v.Data[3] += a
+}
+
 func (v *Vec4) String() string {
 	return fmt.Sprintf("(%f, %f, %f, %f)", v.X(), v.Y(), v.Z(), v.W())
 }

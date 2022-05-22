@@ -30,20 +30,46 @@ func (v *Vec2) G() float32 {
 	return v.Data[1]
 }
 
-func (v *Vec2) SetX(f float32) {
-	v.Data[0] = f
+func (v *Vec2) SetX(x float32) {
+	v.Data[0] = x
 }
 
-func (v *Vec2) SetR(f float32) {
-	v.Data[0] = f
+func (v *Vec2) SetR(r float32) {
+	v.Data[0] = r
 }
 
-func (v *Vec2) SetY(f float32) {
-	v.Data[1] = f
+func (v *Vec2) SetY(y float32) {
+	v.Data[1] = y
 }
 
-func (v *Vec2) SetG(f float32) {
-	v.Data[1] = f
+func (v *Vec2) SetG(g float32) {
+	v.Data[1] = g
+}
+
+func (v *Vec2) AddX(x float32) {
+	v.Data[0] += x
+}
+
+func (v *Vec2) AddY(y float32) {
+	v.Data[1] += y
+}
+
+func (v *Vec2) AddR(r float32) {
+	v.Data[0] += r
+}
+
+func (v *Vec2) AddG(g float32) {
+	v.Data[1] += g
+}
+
+func (v *Vec2) AddXY(x, y float32) {
+	v.Data[0] += x
+	v.Data[1] += y
+}
+
+func (v *Vec2) AddRG(r, g float32) {
+	v.Data[0] += r
+	v.Data[1] += g
 }
 
 func (v *Vec2) String() string {

@@ -60,6 +60,52 @@ func (v *Vec3) SetB(f float32) {
 	v.Data[2] = f
 }
 
+func (v *Vec3) AddX(x float32) {
+	v.Data[0] += x
+}
+
+func (v *Vec3) AddY(y float32) {
+	v.Data[1] += y
+}
+
+func (v *Vec3) AddZ(z float32) {
+	v.Data[2] += z
+}
+
+func (v *Vec3) AddR(r float32) {
+	v.Data[0] += r
+}
+
+func (v *Vec3) AddG(g float32) {
+	v.Data[1] += g
+}
+
+func (v *Vec3) AddB(b float32) {
+	v.Data[2] += b
+}
+
+func (v *Vec3) AddXY(x, y float32) {
+	v.Data[0] += x
+	v.Data[1] += y
+}
+
+func (v *Vec3) AddRG(r, g float32) {
+	v.Data[0] += r
+	v.Data[1] += g
+}
+
+func (v *Vec3) AddXYZ(x, y, z float32) {
+	v.Data[0] += x
+	v.Data[1] += y
+	v.Data[2] += z
+}
+
+func (v *Vec3) AddRGB(r, g, b float32) {
+	v.Data[0] += r
+	v.Data[1] += g
+	v.Data[2] += b
+}
+
 func (v *Vec3) String() string {
 	return fmt.Sprintf("(%f, %f, %f)", v.X(), v.Y(), v.Z())
 }

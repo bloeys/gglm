@@ -64,6 +64,9 @@ func main() {
 	v2.Set(1, 2)
 	println(v1.Eq(v2))
 
+	v1.AddXY(v2.X(), v2.Y())
+	println(v1.String())
+
 	println("V1: " + v1.String())
 	v1.Normalize()
 	println("V1 Normal: " + v1.String())
@@ -96,6 +99,10 @@ func main() {
 	println(v5.Eq(v6))
 
 	println(gglm.DotVec4(v5, v6))
+
+	v5.Add(v6)
+	v5.AddXYZW(v6.X(), v6.Y(), v6.Z(), v6.W())
+	println(v6.String())
 
 	println("V6: " + v6.String())
 	v6.Normalize()

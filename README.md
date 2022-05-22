@@ -22,7 +22,6 @@ gglm currently has the following:
 ## Usage
 
 ```go
-
 import "github.com/bloeys/gglm/gglm"
 
 
@@ -43,10 +42,15 @@ func main() {
 	println(v1.Eq(v2))
 	v2.Set(1, 2)
 	println(v1.Eq(v2))
+
+	//This performs: v1 += v2
+	//v1 is returned from the function, so we can chain calls that operate on v1
+	newX := v1.Add(v2).X()
+	println("newX:", newX)
 }
 ```
 
 ## Notes
+
 You can check compiler inlining decisions using `go run -gcflags "-m" .`. Some functions look a bit weird compared to similar ones
 because we are trying to reduce function complexity so the compiler inlines.
-

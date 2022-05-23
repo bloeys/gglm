@@ -108,14 +108,30 @@ func (v *Vec4) AddA(a float32) {
 	v.Data[3] += a
 }
 
+func (v *Vec4) SetXY(x, y float32) {
+	v.Data[0] = x
+	v.Data[1] = y
+}
+
 func (v *Vec4) AddXY(x, y float32) {
 	v.Data[0] += x
 	v.Data[1] += y
 }
 
+func (v *Vec4) SetRG(r, g float32) {
+	v.Data[0] = r
+	v.Data[1] = g
+}
+
 func (v *Vec4) AddRG(r, g float32) {
 	v.Data[0] += r
 	v.Data[1] += g
+}
+
+func (v *Vec4) SetXYZ(x, y, z float32) {
+	v.Data[0] = x
+	v.Data[1] = y
+	v.Data[2] = z
 }
 
 func (v *Vec4) AddXYZ(x, y, z float32) {
@@ -124,10 +140,23 @@ func (v *Vec4) AddXYZ(x, y, z float32) {
 	v.Data[2] += z
 }
 
+func (v *Vec4) SetRGB(r, g, b float32) {
+	v.Data[0] = r
+	v.Data[1] = g
+	v.Data[2] = b
+}
+
 func (v *Vec4) AddRGB(r, g, b float32) {
 	v.Data[0] += r
 	v.Data[1] += g
 	v.Data[2] += b
+}
+
+func (v *Vec4) SetXYZW(x, y, z, w float32) {
+	v.Data[0] = x
+	v.Data[1] = y
+	v.Data[2] = z
+	v.Data[3] = w
 }
 
 func (v *Vec4) AddXYZW(x, y, z, w float32) {
@@ -135,6 +164,13 @@ func (v *Vec4) AddXYZW(x, y, z, w float32) {
 	v.Data[1] += y
 	v.Data[2] += z
 	v.Data[3] += w
+}
+
+func (v *Vec4) SetRGBA(r, g, b, a float32) {
+	v.Data[0] = r
+	v.Data[1] = g
+	v.Data[2] = b
+	v.Data[3] = a
 }
 
 func (v *Vec4) AddRGBA(r, g, b, a float32) {

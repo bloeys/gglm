@@ -62,9 +62,19 @@ func (v *Vec2) AddG(g float32) {
 	v.Data[1] += g
 }
 
+func (v *Vec2) SetXY(x, y float32) {
+	v.Data[0] = x
+	v.Data[1] = y
+}
+
 func (v *Vec2) AddXY(x, y float32) {
 	v.Data[0] += x
 	v.Data[1] += y
+}
+
+func (v *Vec2) SetRG(r, g float32) {
+	v.Data[0] = r
+	v.Data[1] = g
 }
 
 func (v *Vec2) AddRG(r, g float32) {

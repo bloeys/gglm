@@ -102,26 +102,42 @@ func TestVecSwizzleGet(t *testing.T) {
 func TestVecSwizzleSet(t *testing.T) {
 
 	//Vec2
-	v2 := gglm.NewVec2(0, 0)
+	v2 := gglm.NewVec2(1, 1)
 	ans2 := gglm.NewVec2(1, 2)
 
 	v2.SetX(1)
 	v2.SetY(2)
-
 	if !v2.Eq(ans2) {
 		t.Errorf("Got: %v; Expected: %v", v2.String(), ans2.String())
 	}
 
+	v2 = gglm.NewVec2(1, 1)
 	ans2 = gglm.NewVec2(11, 22)
+
 	v2.SetR(11)
 	v2.SetG(22)
+	if !v2.Eq(ans2) {
+		t.Errorf("Got: %v; Expected: %v", v2.String(), ans2.String())
+	}
 
+	v2 = gglm.NewVec2(1, 1)
+	ans2 = gglm.NewVec2(1, 2)
+
+	v2.SetXY(1, 2)
+	if !v2.Eq(ans2) {
+		t.Errorf("Got: %v; Expected: %v", v2.String(), ans2.String())
+	}
+
+	v2 = gglm.NewVec2(1, 1)
+	ans2 = gglm.NewVec2(11, 22)
+
+	v2.SetRG(11, 22)
 	if !v2.Eq(ans2) {
 		t.Errorf("Got: %v; Expected: %v", v2.String(), ans2.String())
 	}
 
 	//Vec3
-	v3 := gglm.NewVec3(0, 0, 0)
+	v3 := gglm.NewVec3(1, 1, 1)
 	ans3 := gglm.NewVec3(1, 2, 3)
 
 	v3.SetX(1)
@@ -132,6 +148,7 @@ func TestVecSwizzleSet(t *testing.T) {
 		t.Errorf("Got: %v; Expected: %v", v3.String(), ans3.String())
 	}
 
+	v3 = gglm.NewVec3(1, 1, 1)
 	ans3 = gglm.NewVec3(11, 22, 33)
 
 	v3.SetR(11)
@@ -142,8 +159,40 @@ func TestVecSwizzleSet(t *testing.T) {
 		t.Errorf("Got: %v; Expected: %v", v3.String(), ans3.String())
 	}
 
+	v3 = gglm.NewVec3(1, 1, 1)
+	ans3 = gglm.NewVec3(1, 2, 1)
+
+	v3.SetXY(1, 2)
+	if !v3.Eq(ans3) {
+		t.Errorf("Got: %v; Expected: %v", v3.String(), ans3.String())
+	}
+
+	v3 = gglm.NewVec3(1, 1, 1)
+	ans3 = gglm.NewVec3(1, 2, 1)
+
+	v3.SetRG(1, 2)
+	if !v3.Eq(ans3) {
+		t.Errorf("Got: %v; Expected: %v", v3.String(), ans3.String())
+	}
+
+	v3 = gglm.NewVec3(1, 1, 1)
+	ans3 = gglm.NewVec3(1, 2, 3)
+
+	v3.SetXYZ(1, 2, 3)
+	if !v3.Eq(ans3) {
+		t.Errorf("Got: %v; Expected: %v", v3.String(), ans3.String())
+	}
+
+	v3 = gglm.NewVec3(1, 1, 1)
+	ans3 = gglm.NewVec3(1, 2, 3)
+
+	v3.SetRGB(1, 2, 3)
+	if !v3.Eq(ans3) {
+		t.Errorf("Got: %v; Expected: %v", v3.String(), ans3.String())
+	}
+
 	//Vec4
-	v4 := gglm.NewVec4(0, 0, 0, 0)
+	v4 := gglm.NewVec4(1, 1, 1, 1)
 	ans4 := gglm.NewVec4(1, 2, 3, 4)
 
 	v4.SetX(1)
@@ -155,6 +204,7 @@ func TestVecSwizzleSet(t *testing.T) {
 		t.Errorf("Got: %v; Expected: %v", v4.String(), ans4.String())
 	}
 
+	v4 = gglm.NewVec4(1, 1, 1, 1)
 	ans4 = gglm.NewVec4(11, 22, 33, 44)
 
 	v4.SetR(11)
@@ -162,6 +212,55 @@ func TestVecSwizzleSet(t *testing.T) {
 	v4.SetB(33)
 	v4.SetA(44)
 
+	if !v4.Eq(ans4) {
+		t.Errorf("Got: %v; Expected: %v", v4.String(), ans4.String())
+	}
+
+	//
+	v4 = gglm.NewVec4(1, 1, 1, 1)
+	ans4 = gglm.NewVec4(1, 2, 1, 1)
+
+	v4.SetXY(1, 2)
+	if !v4.Eq(ans4) {
+		t.Errorf("Got: %v; Expected: %v", v4.String(), ans4.String())
+	}
+
+	v4 = gglm.NewVec4(1, 1, 1, 1)
+	ans4 = gglm.NewVec4(1, 2, 1, 1)
+
+	v4.SetRG(1, 2)
+	if !v4.Eq(ans4) {
+		t.Errorf("Got: %v; Expected: %v", v4.String(), ans4.String())
+	}
+
+	v4 = gglm.NewVec4(1, 1, 1, 1)
+	ans4 = gglm.NewVec4(1, 2, 3, 1)
+
+	v4.SetXYZ(1, 2, 3)
+	if !v4.Eq(ans4) {
+		t.Errorf("Got: %v; Expected: %v", v4.String(), ans4.String())
+	}
+
+	v4 = gglm.NewVec4(1, 1, 1, 1)
+	ans4 = gglm.NewVec4(1, 2, 3, 1)
+
+	v4.SetRGB(1, 2, 3)
+	if !v4.Eq(ans4) {
+		t.Errorf("Got: %v; Expected: %v", v4.String(), ans4.String())
+	}
+
+	v4 = gglm.NewVec4(1, 1, 1, 1)
+	ans4 = gglm.NewVec4(1, 2, 3, 4)
+
+	v4.SetXYZW(1, 2, 3, 4)
+	if !v4.Eq(ans4) {
+		t.Errorf("Got: %v; Expected: %v", v4.String(), ans4.String())
+	}
+
+	v4 = gglm.NewVec4(1, 1, 1, 1)
+	ans4 = gglm.NewVec4(1, 2, 3, 4)
+
+	v4.SetRGBA(1, 2, 3, 4)
 	if !v4.Eq(ans4) {
 		t.Errorf("Got: %v; Expected: %v", v4.String(), ans4.String())
 	}

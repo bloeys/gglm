@@ -84,9 +84,19 @@ func (v *Vec3) AddB(b float32) {
 	v.Data[2] += b
 }
 
+func (v *Vec3) SetXY(x, y float32) {
+	v.Data[0] = x
+	v.Data[1] = y
+}
+
 func (v *Vec3) AddXY(x, y float32) {
 	v.Data[0] += x
 	v.Data[1] += y
+}
+
+func (v *Vec3) SetRG(r, g float32) {
+	v.Data[0] = r
+	v.Data[1] = g
 }
 
 func (v *Vec3) AddRG(r, g float32) {
@@ -94,10 +104,22 @@ func (v *Vec3) AddRG(r, g float32) {
 	v.Data[1] += g
 }
 
+func (v *Vec3) SetXYZ(x, y, z float32) {
+	v.Data[0] = x
+	v.Data[1] = y
+	v.Data[2] = z
+}
+
 func (v *Vec3) AddXYZ(x, y, z float32) {
 	v.Data[0] += x
 	v.Data[1] += y
 	v.Data[2] += z
+}
+
+func (v *Vec3) SetRGB(r, g, b float32) {
+	v.Data[0] = r
+	v.Data[1] = g
+	v.Data[2] = b
 }
 
 func (v *Vec3) AddRGB(r, g, b float32) {

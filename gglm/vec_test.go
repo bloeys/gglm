@@ -216,7 +216,6 @@ func TestVecSwizzleSet(t *testing.T) {
 		t.Errorf("Got: %v; Expected: %v", v4.String(), ans4.String())
 	}
 
-	//
 	v4 = gglm.NewVec4(1, 1, 1, 1)
 	ans4 = gglm.NewVec4(1, 2, 1, 1)
 

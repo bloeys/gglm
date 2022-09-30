@@ -180,7 +180,7 @@ func main() {
 	camPos := gglm.NewVec3(0, 0, 3)
 	worldUp := gglm.NewVec3(0, 1, 0)
 	targetPos := gglm.NewVec3(0, 0, 0)
-	viewMat := gglm.LookAt(camPos, targetPos, worldUp)
+	viewMat := gglm.LookAtRH(camPos, targetPos, worldUp)
 	println(viewMat.String())
 
 	//Mat2Col

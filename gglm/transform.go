@@ -145,7 +145,29 @@ func NewRotMat(q *Quat) *TrMat {
 	}
 }
 
-func LookAt(pos, targetPos, worldUp *Vec3) *TrMat {
+// LookAtRH does a right-handed coordinate system lookAt (RH is the default for OpenGL).
+// Can be used to create the view matrix
+func LookAtRH(pos, targetPos, worldUp *Vec3) *TrMat {
+
+	forward := SubVec3(targetPos, pos).Normalize()
+	right := Cross(forward, worldUp).Normalize()
+	up := Cross(right, forward)
+
+	return &TrMat{
+		Mat4: Mat4{
+			Data: [4][4]float32{
+				{right.Data[0], up.Data[0], -forward.Data[0], 0},
+				{right.Data[1], up.Data[1], -forward.Data[1], 0},
+				{right.Data[2], up.Data[2], -forward.Data[2], 0},
+				{-DotVec3(pos, right), -DotVec3(pos, up), DotVec3(pos, forward), 1},
+			},
+		},
+	}
+}
+
+// LookAtLH does a left-handed coordinate system lookAt.
+// Can be used to create the view matrix
+func LookAtLH(pos, targetPos, worldUp *Vec3) *TrMat {
 
 	forward := SubVec3(targetPos, pos).Normalize()
 	right := Cross(worldUp, forward).Normalize()
@@ -157,7 +179,7 @@ func LookAt(pos, targetPos, worldUp *Vec3) *TrMat {
 				{right.Data[0], up.Data[0], forward.Data[0], 0},
 				{right.Data[1], up.Data[1], forward.Data[1], 0},
 				{right.Data[2], up.Data[2], forward.Data[2], 0},
-				{-DotVec3(pos, right), -DotVec3(pos, up), DotVec3(pos, forward), 1},
+				{-DotVec3(pos, right), -DotVec3(pos, up), -DotVec3(pos, forward), 1},
 			},
 		},
 	}

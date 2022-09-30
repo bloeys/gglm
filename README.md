@@ -11,9 +11,9 @@ gglm currently has the following:
 - Many useful geometric functions (e.g. dot product, cross product, vector reflection etc)
 - 32-bit scalar operations (e.g. sin32, cos32, equality using epsilon, sqrt32 etc)
 - Useful 32-bit constants (e.g. pi, Deg2Rad, Rad2Deg, float32 epsilon etc)
-- Simple 'siwzzle' interfaces that allow you to do things like `.X()` or `.R()` etc.
+- Simple 'swizzle' interfaces that allow you to do things like `.X()` or `.R()` etc.
 - Very easy to use with graphics/native APIs as everything is implemented using arrays
-- `.String()` functions on all types for pretty pritning
+- `.String()` functions on all types for pretty printing
 
 ## Installation
 
@@ -24,15 +24,7 @@ gglm currently has the following:
 ```go
 import "github.com/bloeys/gglm/gglm"
 
-
 func main() {
-
-	//LookAt
-	camPos := gglm.NewVec3(0, 0, 3)
-	worldUp := gglm.NewVec3(0, 1, 0)
-	targetPos := gglm.NewVec3(0, 0, 0)
-	viewMat := gglm.LookAt(camPos, targetPos, worldUp)
-	println(viewMat.String())
 	
 	//Vec2
 	v1 := &gglm.Vec2{Data: [2]float32{1, 2}}
@@ -47,6 +39,13 @@ func main() {
 	//v1 is returned from the function, so we can chain calls that operate on v1
 	newX := v1.Add(v2).X()
 	println("newX:", newX)
+
+	// LookAt for a right-handed coordinate system
+	camPos := gglm.NewVec3(0, 0, 3)
+	worldUp := gglm.NewVec3(0, 1, 0)
+	targetPos := gglm.NewVec3(0, 0, 0)
+	viewMat := gglm.LookAtRH(camPos, targetPos, worldUp)
+	println(viewMat.String())
 }
 ```
 

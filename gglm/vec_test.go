@@ -191,6 +191,29 @@ func TestVecSwizzleSet(t *testing.T) {
 		t.Errorf("Got: %v; Expected: %v", v3.String(), ans3.String())
 	}
 
+	// Test AngleVec3
+	v3 = gglm.NewVec3(1, 0, 0)
+	v32 := gglm.NewVec3(1, 0, 0)
+
+	angleV3 := gglm.AngleVec3(v3, v32) * gglm.Rad2Deg
+	if angleV3 != 0 {
+		t.Errorf("Got: %v; Expected: %v", v3.String(), 0)
+	}
+
+	v32.SetXY(0, 1)
+	angleV3 = gglm.AngleVec3(v3, v32) * gglm.Rad2Deg
+	if angleV3 != 90 {
+		t.Errorf("Got: %v; Expected: %v", v3.String(), 0)
+	}
+
+	// Test rot by quat
+	v32.SetXY(1, 0)
+	v32.RotByQuat(gglm.NewQuatAngleAxis(90*gglm.Deg2Rad, gglm.NewVec3(0, 1, 0)))
+	angleV3 = gglm.AngleVec3(v3, v32) * gglm.Rad2Deg
+	if angleV3 != 90 {
+		t.Errorf("Got: %v; Expected: %v", v3.String(), 0)
+	}
+
 	//Vec4
 	v4 := gglm.NewVec4(1, 1, 1, 1)
 	ans4 := gglm.NewVec4(1, 2, 3, 4)

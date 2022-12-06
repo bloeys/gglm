@@ -28,14 +28,14 @@ func Cross(v1, v2 *Vec3) *Vec3 {
 	}
 }
 
-//DistVec2 returns euclidean distance between v1 and v2
+// DistVec2 returns euclidean distance between v1 and v2
 func DistVec2(v1, v2 *Vec2) float32 {
 	x := v1.X() - v2.X()
 	y := v1.Y() - v2.Y()
 	return float32(math.Sqrt(float64(x*x + y*y)))
 }
 
-//DistVec3 returns euclidean distance between v1 and v2
+// DistVec3 returns euclidean distance between v1 and v2
 func DistVec3(v1, v2 *Vec3) float32 {
 	x := v1.X() - v2.X()
 	y := v1.Y() - v2.Y()
@@ -43,7 +43,7 @@ func DistVec3(v1, v2 *Vec3) float32 {
 	return float32(math.Sqrt(float64(x*x + y*y + z*z)))
 }
 
-//DistVec4 returns euclidean distance between v1 and v2
+// DistVec4 returns euclidean distance between v1 and v2
 func DistVec4(v1, v2 *Vec4) float32 {
 
 	//Using X() etc won't let the function inline
@@ -54,14 +54,14 @@ func DistVec4(v1, v2 *Vec4) float32 {
 	return float32(math.Sqrt(float64(x*x + y*y + z*z + w*w)))
 }
 
-//DistVec2 returns the squared euclidean distance between v1 and v2 (avoids a sqrt)
+// DistVec2 returns the squared euclidean distance between v1 and v2 (avoids a sqrt)
 func SqrDistVec2(v1, v2 *Vec2) float32 {
 	x := v1.X() - v2.X()
 	y := v1.Y() - v2.Y()
 	return x*x + y*y
 }
 
-//DistVec3 returns the squared euclidean distance between v1 and v2 (avoids a sqrt)
+// DistVec3 returns the squared euclidean distance between v1 and v2 (avoids a sqrt)
 func SqrDistVec3(v1, v2 *Vec3) float32 {
 	x := v1.X() - v2.X()
 	y := v1.Y() - v2.Y()
@@ -69,7 +69,7 @@ func SqrDistVec3(v1, v2 *Vec3) float32 {
 	return x*x + y*y + z*z
 }
 
-//DistVec4 returns the squared euclidean distance between v1 and v2 (avoids a sqrt)
+// DistVec4 returns the squared euclidean distance between v1 and v2 (avoids a sqrt)
 func SqrDistVec4(v1, v2 *Vec4) float32 {
 	x := v1.Data[0] - v2.Data[0]
 	y := v1.Data[1] - v2.Data[1]
@@ -78,9 +78,9 @@ func SqrDistVec4(v1, v2 *Vec4) float32 {
 	return x*x + y*y + z*z + w*w
 }
 
-//ReflectVec2 returns the reflected vector of the incoming vector 'v', and the surface normal 'n'.
+// ReflectVec2 returns the reflected vector of the incoming vector 'v', and the surface normal 'n'.
 //
-//Note: n must be normalized or you will get wrong results
+// Note: n must be normalized or you will get wrong results
 func ReflectVec2(v, n *Vec2) *Vec2 {
 
 	//reflectedVec = v − 2*dot(v, norm)*norm
@@ -94,9 +94,9 @@ func ReflectVec2(v, n *Vec2) *Vec2 {
 	}
 }
 
-//ReflectVec3 returns the reflected vector of the incoming vector 'v', and the surface normal 'n'.
+// ReflectVec3 returns the reflected vector of the incoming vector 'v', and the surface normal 'n'.
 //
-//Note: n must be normalized or you will get wrong results
+// Note: n must be normalized or you will get wrong results
 func ReflectVec3(v, n *Vec3) *Vec3 {
 
 	//reflectedVec = v − 2*dot(v, norm)*norm
@@ -111,7 +111,12 @@ func ReflectVec3(v, n *Vec3) *Vec3 {
 	}
 }
 
-//AngleQuat returns the angle between the two quaternions in radians
+// AngleVec3 returns the angle between the two vectors in radians
+func AngleVec3(v1, v2 *Vec3) float32 {
+	return Acos32(DotVec3(v1, v2) / (v1.Mag() * v2.Mag()))
+}
+
+// AngleQuat returns the angle between the two quaternions in radians
 func AngleQuat(q1, q2 *Quat) float32 {
 	return Acos32(DotQuat(q1, q2))
 }
